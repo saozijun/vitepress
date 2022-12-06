@@ -16,6 +16,13 @@ export default defineConfig({
     outDir: '../public',
     themeConfig: {
         logo: '../img/logo.png',
+        siteTitle: "『 volcano的博客 』",
+        outlineTitle: '<div></div>',
+        outline:[2,6],
+        // socialLinks: [
+        //   { icon: 'github', link: '#' },
+        //   { icon: 'twitter', link: '#' },
+        // ],
         nav: [
             { text: '首页', link: '/' },
             {
