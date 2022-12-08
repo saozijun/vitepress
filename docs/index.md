@@ -12,8 +12,8 @@ hero:
       text: volcnao
       link: 
     - theme: alt
-      text: 开发中
-      link: 
+      text: 零基础
+      link: /web/FrontEnd/Tutorial
 features:
   - icon: ⚡️
     title: 前端
