@@ -34,7 +34,7 @@
 ```html
 <meta name="keywords" content="html"> //为搜索引擎定义关键词
 <meta name="description" content="免费">//描述内容
-<meta name="author" content="xxg">//定义作者
+<meta name="author" content="cxc">//定义作者
 <meta http-equiv="refresh" content="30">//每三十秒刷新页面
 ```
 

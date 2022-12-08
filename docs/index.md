@@ -17,7 +17,7 @@ hero:
 features:
   - icon: ⚡️
     title: 前端
-    details: 整理中...
+    details: HTML CSS JS TS Vue React uniapp 小程序
   - icon: 🖖
     title: 后端
     details: 整理中...

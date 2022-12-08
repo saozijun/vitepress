@@ -9,11 +9,11 @@
 ```
 
 ```css
-a[class^=xxg]  //a标签里 类属性 开头带有xxg
-a[herf$=xxg]   //a标签里 herf属性 结尾有xxg
-a[title*=xxg]  //a标签里 title属性 包含了xxg
+a[class^=cxc]  //a标签里 类属性 开头带有cxc
+a[herf$=cxc]   //a标签里 herf属性 结尾有cxc
+a[title*=cxc]  //a标签里 title属性 包含了cxc
 
-a[class^=xxg]{
+a[class^=cxc]{
     color:blue;
 }
 ```
