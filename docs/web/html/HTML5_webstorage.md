@@ -1,4 +1,4 @@
-# 🟧 HTML5 Web存储 
+# HTML5 Web存储 
 
 HTML5 web 存储，一个比 cookie 更好的本地存储方式。
 
