@@ -12,7 +12,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^1.2.1",
+    "element-plus": "^2.2.27",
     "less-loader": "^11.1.0",
+    "qs": "^6.11.0",
     "vitepress": "^1.0.0-alpha.29",
     "vue": "^3.2.45"
   },

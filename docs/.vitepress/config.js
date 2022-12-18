@@ -42,6 +42,10 @@ export default defineConfig({
         items: [
           { text: 'Node', link: '/backend/Node/Node' },
         ]
+      },
+      {
+        text: '网易云音乐',
+        link: '/music/music' 
       }
     ],
     sidebar: {

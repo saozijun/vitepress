@@ -3,7 +3,7 @@ layout: home
 hero:
   name: volcnao
   text: 
-  tagline: 欢 迎 来 到 我 的 博 客 
+  tagline: 按照大自然的规律你该遇见我了
   image:
     src: /img/logo.png
     alt: volcnao
@@ -20,13 +20,12 @@ features:
     details: HTML CSS JS TS Vue React uniapp 小程序
   - icon: 🖖
     title: 后端
-    details: 整理中...
+    details: Node
   - icon: 🛠️
     title: 小程序
     details: 整理中...
 
 ---
-
 <style>
     :root {
       --vp-home-hero-name-color: transparent;
