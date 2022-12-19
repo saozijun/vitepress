@@ -3,7 +3,6 @@ import { defineConfig } from "vitepress"
 export default defineConfig({
   base: '/docs/',
   title: 'volcnao',
-  outDir: '../dist',
   description: 'Volcano',
   appearance: true, //主题是否可以切换
   ignoreDeadLinks: true,//设置为true后，VitePress 不会因死链接而使构建失败。true
