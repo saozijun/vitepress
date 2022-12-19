@@ -22,7 +22,7 @@ export default defineConfig({
   },
   titleTemplate: '喜晴',
   themeConfig: {
-    logo: '../img/logo.png',
+    logo: '../public/logo.png',
     siteTitle: "volcano『 博客 』",
     outlineTitle: '🍇🍈🍉🍊🍋🍌🍍🥭🍎🍏',
     outline: [2, 6],
