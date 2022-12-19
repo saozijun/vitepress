@@ -7,7 +7,9 @@
           v-model="value"
           filterable
           remote
+          default-first-option
           reserve-keyword
+          suffix-icon="Search"
           placeholder="喜欢你、Letting"
           :remote-method="remoteMethod"
           :loading="loading"
@@ -22,25 +24,29 @@
         </el-select>
       </div>
     </div>
+    <!-- <el-button type="primary" @click="toggleDark">{{ isDark?'dark':'light' }}</el-button> -->
     <el-table
       :data="songData"
       style="width: 100%; margin: 0 auto"
-      v-if="songData.length > 0"
+      v-loading="searchLoading"
+      v-if="songData.length > 0 || searchLoading"
     >
-      <el-table-column fixed prop="name" label="歌曲" width="150" />
+      <el-table-column fixed prop="name" label="歌曲" min-width="150" />
       <el-table-column prop="songName" label="歌手" width="120" />
-      <el-table-column label="头像" width="120" >
+      <!-- <el-table-column label="头像" width="120" >
         <template #default="scope">
-            <el-avatar :size="50" :src="scope.row.artists[0].img1v1Url" />
+            <el-avatar :size="50" :src="scope.row.artists[0].img1v1Url"  />
         </template>
-      </el-table-column>
+      </el-table-column> -->
       <el-table-column fixed="right" label="操作" width="120">
         <template #default="scope">
           <el-button
             link
             type="primary"
             size="small"
-            @click.prevent="playM(scope.$index)"
+            :loading="scope.row.loading"
+            :key="scope.row.id"
+            @click.prevent="playM(scope.$index,scope.row)"
           >
             播放
           </el-button>
@@ -48,69 +54,85 @@
       </el-table-column>
     </el-table>
     <div>
-        <AudioA ref="audioD"  :key="timer" :songur="songur" :songuser="songuser" :data="songData?.[Index]" @gat="changeIndex" />
+        <AudioA ref="audioD"  :key="timer" :songur="songur" :songuser="songuser" :data="songData?.[Index]" @ended="changeFinish" @gat="changeIndex" />
         <div class="hied"></div>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { onMounted, ref } from "vue";
+import { onMounted, ref,watch } from "vue";
 import { ElMessage } from 'element-plus'
 import { search, suggest, songUrl } from "../docs/api/search";
+// import {toggleDark,isDark} from '../composables'
 const options = ref<any[]>([]);
 const songData = ref<any[]>([]);
 const value = ref<string>();
 const songuser = ref<object>();
 const Index = ref<number>(0);
+const searchLoading = ref<boolean>(false);
 const timer = ref<number>(0);
 const songur = ref<String>();
-const audioD=ref(null)
+const audioD=ref()
 const loading = ref(false);
-const playM = async (query: number) => {
+const playM = async (query: number,row:any) => {
   Index.value = query
+  row.loading = true
   const { data } = await songUrl({ id: songData.value[query].id });
   songur.value = data[0].url;
+  row.loading = false
   songuser.value ={
     name:songData.value[query].name,
     artistsName:songData.value[query].artists[0].name,
   }
-  if(!audioD.value.isPlaying){
+  if(!audioD?.value.isPlaying){
     audioD.value.isPlaying = true
   }
   if(!data[0].url){
     ElMessage.error(`音乐请求url为${data[0].url},请换一首~`)
   }
 };
+const changeFinish = () => {
+  changeIndex(false)
+};
+//上一首 下一首
 const changeIndex = async (type:boolean)=>{
+  // type为true为上一首
   if(type){
     Index.value--
   }else{
     Index.value++
   }
+  //判断边界点进行循环
   Index.value = Index.value>9?0:Index.value
   Index.value = Index.value<0?9:Index.value
-  console.log(songData.value[Index.value],songData.value);
-  
+  // console.log(songData.value[Index.value],songData.value);
+  //给音乐组件添加时间戳key  防止不刷新
   timer.value = new Date().getTime()
   const { data } = await songUrl({ id: songData.value[Index.value].id });
   songur.value = data[0].url;
+  //歌曲的名字和歌手的名字 存下传给子组件显示
   songuser.value ={
     name:songData.value[Index.value].name,
     artistsName:songData.value[Index.value].artists[0].name,
   }
+  //有时候的url会没有  很奇怪
   if(!data[0].url){
     ElMessage.error(`音乐请求url为${data[0].url},请换一首~`)
+    changeIndex(false)
   }
-  console.log(songur.value,data);
+  // console.log(songur.value,data);
   
 }
+//搜索框值改变时搜索歌曲
 const songChange = async (query: string) => {
+  searchLoading.value = true
   const data: any = await search({ keywords: query, limit: 10 });
   data.result?.songs.map((item:any) => {
     item.songName = item.artists[0].name;
   });
-  console.log(data.result.songs);
+  searchLoading.value = false
+  // console.log(data.result.songs);
   songData.value = data.result.songs;
 };
 const remoteMethod = async (query: string) => {
@@ -118,6 +140,14 @@ const remoteMethod = async (query: string) => {
     loading.value = true;
     const data: any = await suggest({ keywords: query, limit: 10 });
     loading.value = false;
+    // 需要添加一条输入的值数据
+    console.log(data);
+    let toData = {id:1,name:query}
+    if(data.result.songs){
+      data.result.songs.unshift(toData)
+    }else{
+      data.result.songs = [toData]
+    }
     options.value = data.result.songs;
   } else {
     options.value = [];
@@ -129,7 +159,6 @@ const remoteMethod = async (query: string) => {
 .hied{
     height: 0px;
 }
-
 .box {
   width: 560px;
   margin: 50px auto;
@@ -149,7 +178,7 @@ const remoteMethod = async (query: string) => {
     }
   }
 }
-@media screen and (max-width:600px){
+@media screen and (max-width:1000px){
   .hied{
     height: 100px;
   }
