@@ -5,7 +5,7 @@ hero:
   text: 
   tagline: 按照大自然的规律你该遇见我了
   image:
-    src: /public/logo.png
+    src: /logo.png
     alt: volcnao
   actions:
     - theme: brand
