@@ -1,7 +1,7 @@
 import { defineConfig } from "vitepress"
 
 export default defineConfig({
-  base: '/docs/',
+  // base: '/docs/',
   title: 'volcnao',
   description: 'Volcano',
   appearance: true, //主题是否可以切换
