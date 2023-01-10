@@ -51,7 +51,7 @@
 <script setup lang="ts">
 import bf from "../static/bf.png";
 import zt from "../static/zt.png";
-import { defineExpose, ref } from "vue";
+import { ref } from "vue";
 defineProps({
   songur: String,
   data: Object,

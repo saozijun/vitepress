@@ -1,15 +1,15 @@
-# 🟡 JS 模块化
+#  JS 模块化
 
 ### Node - CommonJS
 - module.exports 【导出】
 - exports 【导出】
 - require 【引入】
-### 🟡 ES6
+###  ES6
 - export 【导出】
 - export default 【导出 默认的】
 - import 【引入】
 - require 【引入】
-### 🟡 多行暴露：
+###  多行暴露：
 ```typescript
 //a.js
 export function aa1(){
@@ -25,7 +25,7 @@ export function aa2(){
 //解构赋值
 import { aa1 , aa2 } from 'a.js'
 ```
-### 🟡 统一暴露：
+###  统一暴露：
 ```typescript
 //b.js
 function bb1(){
@@ -42,7 +42,7 @@ export {bb1,bb2}
 //解构赋值
 import {aa1,aa2} from 'b.js'
 ```
-### 🟡 默认暴露：
+###  默认暴露：
 ```typescript
 //c.js
 export default function cc(){

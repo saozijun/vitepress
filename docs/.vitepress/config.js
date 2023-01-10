@@ -12,50 +12,93 @@ export default defineConfig({
     theme: 'material-palenight',
     lineNumbers: true
   },
-  server: {
-    proxy: {
-      "/search": {
-        target: "https://www.saozijun.vip",
-        changeOrigin:true
-      },
-    },
-  },
   titleTemplate: '喜晴',
   themeConfig: {
-    logo: '/logo.png',
-    siteTitle: "volcano『 博客 』",
+    logo: '/logo2.gif',
+    siteTitle: "『 volcano 🌋 』",
     outlineTitle: '🍇🍈🍉🍊🍋🍌🍍🥭🍎🍏',
-    outline: [2, 6],
+    outline: [1, 6],
     // socialLinks: [
     //   { icon: 'github', link: '#' },
     //   { icon: 'twitter', link: '#' },
     // ],
     nav: [
-      { text: '首页', link: '/' },
+      // { text: '🌋 首页', link: '/' },
       {
-        text: '前端',
+        text: '💻 前端',
         items: [
-          { text: '网站制作入门', link: '/web/FrontEnd/tutorial' },
-          { text: 'HTML', link: '/web/html/HTML' },
-          { text: 'Css', link: '/web/css/css' },
-          { text: 'Javascript', link: 'web/JavaScript/JavaScript' },
-          { text: 'TypeScript', link: 'web/TypeScript/TypeScript' },
-          { text: 'Vue', link: 'web/Vue/Vue' },
-          { text: 'Vue脚手架', link: 'web/Vite/Vite' }
+          { text: '📁 网站制作入门', link: '/web/FrontEnd/tutorial' },
+          { text: '📁 HTML', link: '/web/html/HTML' },
+          { text: '📁 Css', link: '/web/css/css' },
+          { text: '📁 Javascript', link: 'web/JavaScript/JavaScript' },
+          { text: '📁 TypeScript', link: 'web/TypeScript/TypeScript' },
+          { text: '📁 Vue', link: 'web/Vue/Vue' },
+          { text: '📁 Vue脚手架', link: 'web/Vite/Vite' }
         ]
       },
       {
-        text: '后端',
+        text: '👾 后端',
         items: [
-          { text: 'Node', link: '/backend/Node/Node' },
+          { text: '👾 Node', link: '/backend/Node/Node' },
         ]
       },
       {
-        text: '网易云音乐',
+        text: '✨ 面试题',
+        items: [
+          { text: '✨ HTML', link: '/interview/HTML' },
+          { text: '✨ CSS', link: '/interview/Css' },
+          { text: '✨ JavaScript', link: '/interview/Js' },
+          // { text: '✨ TypeScript', link: '/interview/Ts' },
+          { text: '✨ Vue', link: '/interview/Vue' },
+          { text: '✨ React', link: '/interview/React' },
+        ]
+      },
+      {
+        text: '小玩意 💨',
+        items: [
+          { text: '🎮 贪吃蛇', link: 'https://snakets.rth1.one/' },
+          // { text: '🎰 电子密码输入系统', link: 'https://hwqdbz.rth1.one/' },
+        ]
+      },
+      {
+        text: '🎸 网易云音乐',
         link: '/music/music' 
       }
     ],
     sidebar: {
+      "/interview":[
+        {
+          text: "基础",
+          collapsible: true,
+          items: [
+            { text: '✨ HTML', link: '/interview/HTML' },
+            { text: '✨ CSS', link: '/interview/Css' },
+          ],
+        },
+        {
+          text: "✨ JavaScript",
+          collapsible: true,
+          items: [
+            { text: '✨ js基础', link: '/interview/Js' },
+            { text: '✨ 闭包与作用域', link: '/interview/js_bb' },
+            { text: '✨ 函数与函数式编程', link: '/interview/Js_fn' },
+            { text: '✨ 原型与继承', link: '/interview/Js_yx' },
+            { text: '✨ 异步与事件循环', link: '/interview/Js_yb' },
+            { text: '✨ async/await 语法', link: '/interview/Js_aa' },
+            { text: '✨ ES6 新语法', link: '/interview/Js_ES6' },
+            { text: '✨ DOM', link: '/interview/Js_DOM' },
+            { text: '✨ 其他类型问题补充', link: '/interview/Js_rests' },
+          ],
+        },
+        {
+          text: "框架技术",
+          collapsible: true,
+          items: [
+            { text: '✨ Vue', link: '/interview/Vue' },
+            { text: '✨ React', link: '/interview/React' },
+          ],
+        },
+      ],
       "/web/FrontEnd": [
         {
           text: "🍳〖零基础〗",
@@ -65,10 +108,7 @@ export default defineConfig({
             { text: "👋 Hello World", link: "/web/FrontEnd/HelloWorld" },
             { text: "⚔️ 趁手兵器", link: "/web/FrontEnd/Weapons" },
             { text: "🎗️ 介绍前端三剑客", link: "/web/FrontEnd/intro" },
-            {
-              text: "🚧 前端学习路径",
-              link: "/web/FrontEnd/LearningPath",
-            },
+            { text: "🚧 前端学习路径",link: "/web/FrontEnd/LearningPath"},
           ],
         },
       ],
@@ -100,14 +140,21 @@ export default defineConfig({
             { text: '代码片段', link: '/web/css/css_code_slice' },
             { text: '选择器', link: '/web/css/css_selector' },
             { text: '雪碧图', link: '/web/css/css_sprite' },
+          
           ]
         },
         {
-          text: 'HTML5',
+          text: 'css-进阶',
           collapsible: true,
           items: [
-            { text: '介绍', link: '/web/html/HTML5' },
-            { text: 'Web存储', link: '/web/html/HTML5_webstorage' },
+            { text: '张鑫旭', link: 'https://www.zhangxinxu.com/wordpress/category/css/' },
+            { text: '大漠老师-w3cplus', link: 'https://www.w3cplus.com/' },
+            { text: 'iCSS', link: 'https://github.com/chokcoco/iCSS' },
+            { text: 'CSS-inspiration', link: 'https://chokcoco.github.io/CSS-Inspiration/#/' },
+            { text: 'CSS Battle', link: 'https://cssbattle.dev/' },
+            { text: 'CodePen', link: 'https://codepen.io/trending' },
+            { text: 'CSS-Tricks', link: 'https://css-tricks.com/' },
+            { text: 'sbcoco', link: '/web/css/css_coco' },
           ]
         }
       ],
@@ -116,86 +163,50 @@ export default defineConfig({
           text: "JavaScript",
           collapsible: true,
           items: [
-            {
-              text: "学习路径",
-              link: "web/JavaScript/JavaScript",
-            },
-            { text: "学习笔记", link: "web/JavaScript/JS_Note" },
-            {
-              text: "代码片段",
-              link: "web/JavaScript/JS_CodeSnippet",
-            },
-            { text: "JS 事件", link: "web/JavaScript/JS_events" },
-            {
-              text: "JS Map 和 Set",
-              link: "web/JavaScript/JS_MapSet",
-            },
+            { text: "学习路线",link: "/web/JavaScript/JavaScript"},
+            { text: "学习笔记", link: "/web/JavaScript/JS_Note" },
+            { text: "代码片段",link: "/web/JavaScript/JS_CodeSnippet"},
+            { text: "JS 事件", link: "/web/JavaScript/JS_events" },
+            { text: "JS Map 和 Set",link: "/web/JavaScript/JS_MapSet"},
           ],
         },
         {
           text: "JS - 方法",
           collapsible: true,
           items: [
-            { text: "Math数学方法", link: "web/JavaScript/JS_Math" },
-            { text: "Date日期/时间", link: "web/JavaScript/JS_Date" },
-            { text: "JS 数组方法", link: "web/JavaScript/JS_Array" },
-            {
-              text: "JS 数组遍历",
-              link: "web/JavaScript/JS_ArrayEach",
-            },
-            {
-              text: "JS 数组查找",
-              link: "web/JavaScript/JS_ArrayFind",
-            },
-            {
-              text: "JS 数组删除",
-              link: "web/JavaScript/JS_ArrayDelete",
-            },
-            {
-              text: "JS 数组批量删除",
-              link: "web/JavaScript/JS_ArrayBatchesDelete",
-            },
-            { text: "JS 对象方法", link: "web/JavaScript/JS_Object" },
-            {
-              text: "JS 字符串方法",
-              link: "web/JavaScript/JS_String",
-            },
-            {
-              text: "JS 类型转换",
-              link: "web/JavaScript/JS_ChangeType",
-            },
+            { text: "Math数学方法", link: "/web/JavaScript/JS_Math" },
+            { text: "Date日期/时间", link: "/web/JavaScript/JS_Date" },
+            { text: "JS 数组方法", link: "/web/JavaScript/JS_Array" },
+            { text: "JS 数组遍历",link: "/web/JavaScript/JS_ArrayEach",},
+            { text: "JS 数组查找",link: "/web/JavaScript/JS_ArrayFind"},
+            { text: "JS 数组删除",link: "/web/JavaScript/JS_ArrayDelete"},
+            { text: "JS 数组批量删除",link: "/web/JavaScript/JS_ArrayBatchesDelete"},
+            { text: "JS 对象方法", link: "/web/JavaScript/JS_Object" },
+            { text: "JS 字符串方法",link: "/web/JavaScript/JS_String"},
+            { text: "JS 类型转换",link: "/web/JavaScript/JS_ChangeType"},
           ],
         },
         {
           text: "ES6",
           collapsible: true,
           items: [
-            { text: "ES6", link: "web/FrontEnd/JavaScript/JS_ES6" },
-            { text: "ES6 Class", link: "web/FrontEnd/JavaScript/JS_ES6_Class" },
-            { text: "JS 模块化", link: "web/FrontEnd/JavaScript/JS_module" },
-            {
-              text: "JS 深拷贝-浅拷贝",
-              link: "web/FrontEnd/JavaScript/JS_Copy",
-            },
+            { text: "ES6", link: "/web/JavaScript/JS_ES6" },
+            { text: "ES6 Class", link: "/web/JavaScript/JS_ES6_Class" },
+            { text: "JS 模块化", link: "/web/JavaScript/JS_module" },
+            { text: "JS 深拷贝-浅拷贝",link: "/web/JavaScript/JS_Copy"},
           ],
         },
       ],
-      "/web/TypeScript": [
+      "web/TypeScript": [
         {
           text: "TypeScript",
           collapsible: true,
           items: [
             { text: "TypeScript", link: "/web/TypeScript/TypeScript" },
-            {
-              text: "接口 interface",
-              link: "/web/TypeScript/TS_interface",
-            },
+            { text: "接口 interface",link: "/web/TypeScript/TS_interface" },
             { text: "数组的类型", link: "/web/TypeScript/TS_Array" },
             { text: "函数的类型", link: "/web/TypeScript/TS_Funsion" },
-            {
-              text: "类型断言 as",
-              link: "/web/TypeScript/TS_assertion",
-            },
+            { text: "类型断言 as",link: "/web/TypeScript/TS_assertion"},
             { text: "声明文件", link: "/web/TypeScript/TS_declare" },
             { text: "内置对象", link: "/web/TypeScript/TS_objects" },
             { text: "类型别名 type", link: "/web/TypeScript/TS_type" },
@@ -203,10 +214,7 @@ export default defineConfig({
             // { text: '枚举 enum', link: '/web/TypeScript/TS_enum' },
             // { text: '类 class', link: '/web/TypeScript/TS_class' },
             { text: "泛型 <?>", link: "/web/TypeScript/TS_generic" },
-            {
-              text: "TypeScript 笔记",
-              link: "/web/TypeScript/TS_Note",
-            },
+            { text: "TypeScript 笔记",link: "/web/TypeScript/TS_Note"},
           ],
         },
       ],
@@ -224,30 +232,15 @@ export default defineConfig({
           collapsible: true,
           items: [
             { text: "Vue2 事件", link: "/web/Vue/Vue2_events" },
-            {
-              text: "Vue2 计算 computed",
-              link: "/web/Vue/Vue2_computed",
-            },
+            { text: "Vue2 计算 computed",link: "/web/Vue/Vue2_computed"},
             { text: "Vue2 监听 Watch", link: "/web/Vue/Vue2_watch" },
-            {
-              text: "Vue2 过滤器 filters",
-              link: "/web/Vue/Vue2_filters",
-            },
+            { text: "Vue2 过滤器 filters",link: "/web/Vue/Vue2_filters"},
             { text: "Vue2 生命周期", link: "/web/Vue/Vue2_life" },
-            {
-              text: "Vue2 父子组件通信",
-              link: "/web/Vue/Vue2_components",
-            },
-            {
-              text: "Vue2 keep-alive",
-              link: "/web/Vue/Vue2_keep-alive",
-            },
+            { text: "Vue2 父子组件通信",link: "/web/Vue/Vue2_components"},
+            { text: "Vue2 keep-alive",link: "/web/Vue/Vue2_keep-alive"},
             { text: "Vue2 插槽 slot", link: "/web/Vue/Vue2_slot" },
             { text: "Vue2 过渡动画", link: "/web/Vue/Vue2_animation" },
-            {
-              text: "Object.defineProperty",
-              link: "/web/Vue/Vue2_defineProperty",
-            },
+            { text: "Object.defineProperty",link: "/web/Vue/Vue2_defineProperty",},
           ],
         },
         {
@@ -272,16 +265,10 @@ export default defineConfig({
           items: [
             { text: "Vite", link: "/web/Vite/Vite" },
             { text: "Vite 安装 Sass", link: "/web/Vite/Vite_Sass" },
-            {
-              text: "Vite 安装 VueRouter",
-              link: "/web/Vite/Vite_VueRouter",
-            },
+            { text: "Vite 安装 VueRouter",link: "/web/Vite/Vite_VueRouter"},
             { text: "Vite 安装 Vuex", link: "/web/Vite/Vite_Vuex" },
+            { text: "Vite 跨域 - 开发环境",link: "/web/Vite/Vite_cors"},
             { text: "Vite 区分环境", link: "/web/Vite/Vite_env" },
-            {
-              text: "Vite 跨域 - 开发环境",
-              link: "/web/Vite/Vite_cors",
-            },
             { text: "Vue Cli", link: "/web/Vite/VueCli" },
             { text: "网页样式初始化", link: "/web/Vite/CSS_init" },
             { text: "📱 移动端优化与适配", link: "/web/Vite/Mobile" },
@@ -290,14 +277,8 @@ export default defineConfig({
             { text: "Vuex", link: "/web/Vite/Vuex" },
             { text: " Pinia", link: "/web/Vite/Pinia" },
             { text: "Axios", link: "/web/Vite/Axios" },
-            {
-              text: "Axios + Vue3 封装/跨域",
-              link: "/web/Vite/Axios_Vue3",
-            },
-            {
-              text: "Axios + Vue2 封装/跨域",
-              link: "/web/Vite/Axios_Vue2",
-            },
+            { text: "Axios + Vue3 封装/跨域",link: "/web/Vite/Axios_Vue3"},
+            { text: "Axios + Vue2 封装/跨域",link: "/web/Vite/Axios_Vue2"},
           ],
         },
       ],
@@ -319,44 +300,26 @@ export default defineConfig({
             { text: "Express 入门", link: "/backend/Express/Express" },
             { text: "Nodemon 热加载", link: "/backend/Express/Nodemon" },
             { text: "Route 路由", link: "/backend/Express/Express_Route" },
-            {
-              text: "static 静态资源",
-              link: "/backend/Express/Express_static",
-            },
+            { text: "static 静态资源",link: "/backend/Express/Express_static"},
             { text: "CORS 跨域", link: "/backend/Express/Express_CORS" },
-            {
-              text: "Express + 🐬 MySQL",
-              link: "/backend/Express/Express_MySQL",
-            },
+            { text: "Express + 🐬 MySQL",link: "/backend/Express/Express_MySQL"},
             { text: "JWT 认证机制", link: "/backend/Express/Express_JWT" },
-            {
-              text: "bcryptjs 密码加密",
-              link: "/backend/Express/Express_bcryptjs",
-            },
-            {
-              text: "multer 上传文件",
-              link: "/backend/Express/Express_multer_file",
-            },
-            {
-              text: "【前端】上传头像",
-              link: "/backend/Express/Express_multer_avater",
-            },
+            { text: "bcryptjs 密码加密",link: "/backend/Express/Express_bcryptjs"},
+            { text: "multer 上传文件",link: "/backend/Express/Express_multer_file"},
+            { text: "【前端】上传头像",link: "/backend/Express/Express_multer_avater"},
           ],
         },
         {
           text: "+ + 🐬",
           collapsible: true,
           items: [
-            {
-              text: "Express 项目案例流程",
-              link: "/backend/Express/Express_Node_MySQL",
-            },
+            { text: "Express 项目案例流程",link: "/backend/Express/Express_Node_MySQL"},
           ],
         },
       ],
     },
     footer: {
-      copyright: 'Copyright © 2022-present volcano'
+      copyright: 'Copyright © 2023-present volcano'
     }
   }
 })

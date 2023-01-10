@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { errorCodeType } from '../utils/error-code-type';
 import { ElMessage, ElLoading } from 'element-plus';
- 
+
 // 创建axios实例
 const service = axios.create({
     // 服务接口请求
