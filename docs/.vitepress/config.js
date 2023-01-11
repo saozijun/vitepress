@@ -51,6 +51,8 @@ export default defineConfig({
           // { text: '✨ TypeScript', link: '/interview/Ts' },
           { text: '✨ Vue', link: '/interview/Vue' },
           { text: '✨ React', link: '/interview/React' },
+          { text: '✨ 手写代码', link: '/interview/handWrite' },
+          { text: '✨ 算法基础', link: '/interview/algorithm' },
         ]
       },
       {
@@ -91,11 +93,19 @@ export default defineConfig({
           ],
         },
         {
-          text: "框架技术",
+          text: "✨ 框架技术",
           collapsible: true,
           items: [
             { text: '✨ Vue', link: '/interview/Vue' },
             { text: '✨ React', link: '/interview/React' },
+          ],
+        },
+        {
+          text: "✨ 其他",
+          collapsible: true,
+          items: [
+            { text: '✨ 手写代码', link: '/interview/handWrite' },
+            { text: '✨ 算法基础', link: '/interview/algorithm' },
           ],
         },
       ],

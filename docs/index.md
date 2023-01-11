@@ -39,6 +39,11 @@ features:
     :root {
       --vp-home-hero-name-color: transparent;
       --vp-home-hero-name-background: -webkit-linear-gradient(120deg,#ff2a2a,#ffe4e4);
+      /* --vp-button-brand-bg:#ff7272;
+      --vp-button-brand-hover-bg:#ffb1b1;
+      --vp-button-brand-border:#ff7272;
+      --vp-button-brand-hover-border:#ffb1b1;
+      --vp-c-brand-light:#ffb1b1; */
     }
     .image-src{
       width:500px

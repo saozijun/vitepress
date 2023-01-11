@@ -26,6 +26,25 @@
 
 ## 第一次页面加载会触发哪几个钩子？
 第一次页面加载时会触发 `beforeCreate`, `created`, `beforeMount`, `mounted` 这几个钩子
+
+##  ref、 shallowRef 、isRef、toRefs 函数
+
+### ref
+ref() 函数用来根据给定的值创建一个响应式的数据对象，ref() 函数调用的返回值是一个对象，这个对象上只包含一个 value 属性, 只在 setup 函数内部访问 ref 函数需要加 .value，其用途创建独立的原始值
+
+reactive 将解包所有深层的 refs，同时维持 ref 的响应性。当将 ref分配给 reactive property 时，ref 将被自动解包
+### shallowRef
+ref() 的浅层作用形式。shallowRef() 常常用于对大型数据结构的性能优化或是与外部的状态管理系统集成
+
+### isRef
+isRef() 用来判断某个值是否为 ref() 创建出来的对象
+### toRefs
+使用场景：如果对一个响应数据，进行解构 或者 展开，会丢失他的响应式特性!<br>
+原因：vue3 底层是对 对象 进行监听劫持<br>
+作用：对一个响应式对象的所有内部属性，都做响应式处理
+- reactive/ref 的响应式功能是赋值给对象的，如果给对象解构或者展开，会让数据丢失响应式的能力
+- 使用 toRefs 可以保证该对象展开的每个属性都是响应式的
+
 ## 说说你对SPA单页面的理解，它的优缺点分别是什么？
 SPA（ single page application ）仅在 Web 页面初始化时加载相应的 HTML、JavaScript 和 CSS。
 
@@ -469,3 +488,128 @@ API开发复杂组件，同一个功能逻辑的代码被拆分到不同选项 �
 Composition Api
 
 - vue3 新增的一组 api，它是基于函数的 api，可以更灵活的组织组件的逻辑。<br>解决options api在大型项目中，options api不好拆分和重用的问题。
+
+## Vue3 Diff 算法和 Vue2 的区别
+我们知道在数据变更触发页面重新渲染，会生成虚拟 DOM 并进行 patch 过程，这一过程在 Vue3 中的优化有如下
+
+编译阶段的优化：
+
+- 事件缓存：将事件缓存（如: @click），可以理解为变成静态的了
+- 静态提升：第一次创建静态节点时保存，后续直接复用
+- 添加静态标记：给节点添加静态标记，以优化 Diff 过程
+
+由于编译阶段的优化，除了能更快的生成虚拟 DOM 以外，还使得 Diff 时可以跳过"永远不会变化的节点"，
+
+Diff 优化如下
+
+- Vue2 是全量 Diff，Vue3 是静态标记 + 非全量 Diff
+- 使用最长递增子序列优化了对比流程
+
+根据尤大公布的数据就是 Vue3 update 性能提升了 1.3~2 倍
+
+## composition API 与 options API 的区别
+1. vue2 采用的就是 optionsAPI
+   - 优点：易于学习和使用，每个代码有着明确的位置 (例如：数据放 data 中，方法放 methods 中)
+   - 缺点：相似的逻辑，不容易复用，在大项目中尤为明显
+   - 虽然 optionsAPI 可以通过mixins 提取相同的逻辑, 但是也并不是特别好维护
+
+2. vue3 新增的就是 compositionAPI
+   - compositionAPI 是基于 逻辑功能 组织代码的, 一个功能 api 相关放到一起
+   - 即使项目大了, 功能多了, 也能快速定位功能相关的 api
+   - 大大的提升了 代码可读性 和 可维护性
+
+3. vue3 推荐使用 composition API，也保留了options API<br>
+  即就算不用composition API，用 vue2 的写法也完全兼容！！
+
+##  Composition API 与 React Hook 很像，区别是什么
+从 React Hook 的实现角度看，React Hook 是根据 useState 调用的顺序来确定下一次重渲染时的 state 是来源于哪个 useState，所以出现了以下限制
+
+- 不能在循环、条件、嵌套函数中调用 Hook
+- 必须确保总是在你的React函数的顶层调用 Hook
+- useEffect、useMemo 等函数必须手动确定依赖关系
+
+而 Composition API 是基于 Vue 的响应式系统实现的，与 React Hook 的相比
+
+- 声明在 setup 函数内，一次组件实例化只调用一次 setup，而 React Hook 每次重渲染都需要调用 Hook，使得 React 的 GC 比 Vue 更有压力，性能也相对于 Vue 来说也较慢
+- Compositon API 的调用不需要顾虑调用顺序，也可以在循环、条件、嵌套函数中使用
+- 响应式系统自动实现了依赖收集，进而组件的部分的性能优化由 Vue 内部自己完成，而 React Hook 需要手动传入依赖，而且必须必须保证依赖的顺序，让 useEffect、useMemo 等函数正确的捕获依赖变量，否则会由于依赖不正确使得组件性能下降。
+
+虽然 Compositon API 看起来比 React Hook 好用，但是其设计思想也是借鉴 React Hook 的。
+
+## setup 函数
+setup() 函数是 vue3 中，专门为组件提供的新属性。它为我们使用 vue3 的 Composition API 新特性提供了统一的入口，setup 函数会在 beforeCreate 、created 之前执行，vue3 也是取消了这两个钩子，统一用 setup 代替，该函数相当于一个生命周期函数，vue 中过去的 data，methods，watch 等全部都用对应的新增 api 写在 setup() 函数中
+
+setup() 接收两个参数 props 和 context。它里面不能使用 this，而是通过 context 对象来代替当前执行上下文绑定的对象，context 对象有四个属性：attrs、slots、emit、expose
+
+里面通过 ref 和 reactive 代替以前的 data 语法，return 出去的内容，可以在模板直接使用，包括变量和方法
+```vue
+<template>
+  <div class="container">
+    <h1 @click="say()">{{msg}}</h1>
+  </div>
+</template>
+<script>
+export default {
+  setup (props,context) {
+    console.log('setup执行了')
+    console.log(this)  // undefined
+    // 定义数据和函数
+    const msg = 'hi vue3'
+    const say = () => {
+      console.log(msg)
+    }
+    // Attribute (非响应式对象，等同于 $attrs)
+    context.attrs
+    // 插槽 (非响应式对象，等同于 $slots)
+    context.slots
+    // 触发事件 (方法，等同于 $emit)
+    context.emit
+    // 暴露公共 property (函数)
+    context.expose
+    return { msg , say}
+  },
+  beforeCreate() {
+    console.log('beforeCreate执行了')
+    console.log(this)  
+  }
+}
+</script>
+```
+
+## setup 语法糖 （script setup 语法）
+script setup 是在单文件组件 (SFC) 中使用组合式 API 的编译时语法糖。相比于普通的 script 语法更加简洁
+
+要使用这个语法，需要将 setup attribute 添加到 `<script>` 代码块上：
+
+格式：
+```vue
+<script setup>
+console.log('hello script setup')
+</script>h3>
+```
+顶层的绑定会自动暴露给模板，所以定义的变量，函数和 import 导入的内容都可以直接在模板中直接使用
+```vue
+<template>
+  <div>
+    <h3>根组件</h3>
+    <div>点击次数：{{ count }}</div>
+    <button @click="add">点击修改</button>
+  </div>
+</template>
+<script setup>
+import { ref } from 'vue'
+const count = ref(0)
+const add = () => {
+  count.value++
+}
+</script>
+```
+使用 setup 语法糖时，不用写 export default {}，子组件只需要 import 就直接使用，不需要像以前一样在 components 里注册，属性和方法也不用 return。
+
+并且里面不需要用 `async` 就可以直接使用 `await`，因为这样默认会把组件的 `setup` 变为 `async setup`
+
+用语法糖时，`props、attrs、slots、emit、expose` 的获取方式也不一样了
+
+3.0~3.2 版本变成了通过 `import` 引入的 `API：defineProps`、`defineEmit`、`useContext`（在 3.2 版本已废弃），`useContext` 的属性 { `emit`, `attrs`, `slots`, `expose` }
+
+3.2+ 版本不需要引入，而直接调用：`defineProps、defineEmits、defineExpose、useSlots、useAttrs`

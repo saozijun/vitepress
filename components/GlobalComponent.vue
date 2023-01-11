@@ -192,10 +192,10 @@ const remoteMethod = async (query: string) => {
   border: 1px solid #409eff;
   padding: 20px;
   border-radius: 10px;
-  /deep/ .el-table__body,/deep/ .el-table__header{
+  :deep(.el-table__body),:deep(.el-table__header){
     width: 100% !important;
   }
-  /deep/.el-select{
+  :deep(.el-select){
     margin: 0 auto;
   }
   .m-4 {
