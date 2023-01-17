@@ -3,8 +3,8 @@ import DefaultTheme from "vitepress/theme";
 import "aplayer/dist/APlayer.min.css";
 import { onMounted, ref, nextTick, watch, computed } from "vue";
 import { playlist, songUrl, lyric } from "../docs/api/search";
-import APlayer from "aplayer";
 import { useStore } from "vuex";
+// import APlayer from 'aplayer';
 const { state, commit } = useStore();
 const { Layout } = DefaultTheme;
 const aplayer = ref();
@@ -56,6 +56,7 @@ const combined = (arr1: any, arr2: any) => {
 };
 //页面加载时
 onMounted(async () => {
+  let {default:APlayer} = await import('aplayer').then()
   audioList.value = [];
   // 获取我的喜欢歌曲列表
   const { playlist: data } = await playlist();
@@ -73,11 +74,11 @@ onMounted(async () => {
       lrc: "",
     };
   }
-  const { lrc } = await lyric({ id: data.tracks[0].id });
+  // const { lrc } = await lyric({ id: data.tracks[0].id });
   //获取全部音乐的url
 
   let { data: musicList } = await songUrl({ id });
-  tempList[0].lrc = lrc.lyric;
+  // tempList[0].lrc = lrc.lyric;
   //音乐数据列表赋值
   audioList.value = combined(tempList, musicList);
   commit("setAudiolist", combined(tempList, musicList));
@@ -98,12 +99,6 @@ onMounted(async () => {
      let ele: any = document.getElementsByClassName("aplayer-body")[0];
      //如果页面可视宽度小于1000 并且为音乐组件内容隐藏时
      ele.style.left = document.body.clientWidth < 1000 && !ishsow.value ? "-66px" : "0";
-    //  let lrc: any = document.getElementsByClassName("aplayer-lrc")[0];
-    //  if(window.location.href.indexOf('music.html')>=0 && document.body.clientWidth < 1000 ){
-    //     lrc.style.bottom = "110px";
-    //     lrc.style.left = "0";
-    //     lrc.style.right = "0";
-    //  }
   });
   ap.value.on("canplay", () => {
     //当文件就绪可以开始播放时触发（缓冲已足够开始时）
