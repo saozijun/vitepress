@@ -56,7 +56,7 @@ const combined = (arr1: any, arr2: any) => {
 };
 //页面加载时
 onMounted(async () => {
-  let {default:APlayer} = await import('aplayer').then()
+  let {default:APlayer} = await import('aplayer')
   audioList.value = [];
   // 获取我的喜欢歌曲列表
   const { playlist: data } = await playlist();
