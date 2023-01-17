@@ -20,7 +20,7 @@ features:
   details: 💻 HTML CSS JS TS Vue React
 - icon: 👾 
   title: 后端 👾
-  details: 👾 Node+Express
+  details: 👾 Node+Express java C++
 - icon: 🌌 
   title: 小程序 🌌 
   details: 🌌 整理中...

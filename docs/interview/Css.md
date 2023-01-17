@@ -4,7 +4,7 @@
 # ✨ CSS ✨
 ## CSS 选择器及其优先级
 
-选择器|格式|优先级权重
+<div style="width:150px">选择器</div>|格式|优先级权重
 :--------:|:--------:|:--------:
 id选择器|#id|100
 类选择器|.classname|10
@@ -439,41 +439,41 @@ flex 布局（CSS3 中出现的）
 - 先将元素的左上角通过 top: 50% 和 left: 50% 定位到页面的中心，然后再通过 translate 来调整元素的中心点到页面的中心。该方法需要考虑浏览器兼容问题。  
  ```css
  .parent {  
- position: relative;
+    position: relative;
  }
  .child {    
- position: absolute;    
- left: 50%;
- top: 50%;    
- transform: translate(-50%,-50%);
+    position: absolute;    
+    left: 50%;
+    top: 50%;    
+    transform: translate(-50%,-50%);
  }
  ```
 
 - 设置四个方向的值都为 0，并将 margin 设置为 auto，由于宽高固定，因此对应方向实现平分，可以实现水平和垂直方向上的居中。该方法适用于盒子有宽高的情况：
  ```css
  .parent {
- position: relative;
+    position: relative;
  }
  .child {
- position: absolute;
- top: 0;
- bottom: 0;
- left: 0;
- right: 0;
- margin: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
  }
  ```
 - 先将元素的左上角通过 top: 50% 和 left: 50% 定位到页面的中心，然后再通过 margin 负值来调整元素的中心点到页面的中心。该方法适用于盒子宽高已知的情况
  ```css
  .parent {
- position: relative;
+    position: relative;
  }
  .child {
- position: absolute;
- top: 50%;
- left: 50%;
- margin-top: -50px; /* 自身 height 的一半 */
- margin-left: -50px; /* 自身 width 的一半 */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -50px; /* 自身 height 的一半 */
+    margin-left: -50px; /* 自身 width 的一半 */
  }
 ```
 
@@ -482,9 +482,9 @@ flex 布局（CSS3 中出现的）
 
 ```css
 .parent {
-display: flex;
-justify-content:center;
-align-items:center;
+    display: flex;
+    justify-content:center;
+    align-items:center;
 }
 ```
 ### 使用 grid 布局

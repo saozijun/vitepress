@@ -12,6 +12,9 @@ export default defineConfig({
     theme: 'material-palenight',
     lineNumbers: true
   },
+  head:[
+    ['link', { rel: 'icon', href: '/logo2.gif' }]
+  ],
   titleTemplate: '喜晴',
   themeConfig: {
     logo: '/logo2.gif',
@@ -68,6 +71,7 @@ export default defineConfig({
       }
     ],
     sidebar: {
+
       "/interview":[
         {
           text: "基础",
