@@ -1,6 +1,7 @@
 <script  lang="ts" setup>
 import DefaultTheme from "vitepress/theme";
 import "aplayer/dist/APlayer.min.css";
+import { ElNotification } from 'element-plus'
 import { onMounted, ref, nextTick, watch, computed } from "vue";
 import { playlist, songUrl, lyric } from "../docs/api/search";
 import { useStore } from "vuex";
@@ -56,41 +57,62 @@ const combined = (arr1: any, arr2: any) => {
 };
 //页面加载时
 onMounted(async () => {
-  let {default:APlayer} = await import('aplayer')
-  audioList.value = [];
-  // 获取我的喜欢歌曲列表
-  const { playlist: data } = await playlist();
-  let id = ""; //设置初始id
-  let tempList = []; //初始化音乐url列表
-  //循环把id 相加 用来下一次请求
-  for (let i = 0; i < data.tracks.length; i++) {
-    id += data.tracks[i].id + (data.tracks.length != i + 1 ? "," : "");
-    tempList[i] = {
-      id: data.tracks[i].id,
-      name: data.tracks[i].name,
-      artist: data.tracks[i].ar[0].name,
-      url: "",
-      cover: data.tracks[i].al.picUrl,
-      lrc: "",
-    };
-  }
-  // const { lrc } = await lyric({ id: data.tracks[0].id });
-  //获取全部音乐的url
+  ElNotification({
+    title: 'Tip',
+    message: '音乐组件加载中...',
+    showClose: false,
+    duration:2000,
+  })
+  try{
+    let {default:APlayer} = await import('aplayer')
+    audioList.value = [];
+    // 获取我的喜欢歌曲列表
+    const { playlist: data } = await playlist();
+    let id = ""; //设置初始id
+    let tempList = []; //初始化音乐url列表
+    //循环把id 相加 用来下一次请求
+    for (let i = 0; i < data.tracks.length; i++) {
+      id += data.tracks[i].id + (data.tracks.length != i + 1 ? "," : "");
+      tempList[i] = {
+        id: data.tracks[i].id,
+        name: data.tracks[i].name,
+        artist: data.tracks[i].ar[0].name,
+        url: "",
+        cover: data.tracks[i].al.picUrl,
+        lrc: "",
+      };
+    }
+    const { lrc } = await lyric({ id: data.tracks[0].id });
+    //获取全部音乐的url
 
-  let { data: musicList } = await songUrl({ id });
-  // tempList[0].lrc = lrc.lyric;
-  //音乐数据列表赋值
-  audioList.value = combined(tempList, musicList);
-  commit("setAudiolist", combined(tempList, musicList));
-  //实例化 APlayer
-  ap.value = new APlayer({
-    container: aplayer.value,
-    audio: audioList.value,
-    fixed: true,
-    autoplay: true,
-    lrcType: 2,
-    theme: "#47ba86",
-  });
+    let { data: musicList } = await songUrl({ id });
+    tempList[0].lrc = lrc.lyric;
+    //音乐数据列表赋值
+    audioList.value = combined(tempList, musicList);
+    commit("setAudiolist", combined(tempList, musicList));
+    //实例化 APlayer
+    ap.value = new APlayer({
+      container: aplayer.value,
+      audio: audioList.value,
+      fixed: true,
+      autoplay: true,
+      lrcType: 2,
+      theme: "#47ba86",
+    });
+    ElNotification.success({
+      title: '🎸 success',
+      message: '音乐组件加载完成~ 🎸 左下角可以操作哟~',
+      showClose: false,
+      duration:4000,
+    })
+  }catch{
+    ElNotification.error({
+      title: '🎸 Error',
+      message: '音乐组件加载失败咯~ 🎸',
+      showClose: false,
+      duration:4000,
+   })
+  }
   //等dom加载完成监听按钮事件
   nextTick(() => {
     commit("setaudioShow", true);
@@ -125,13 +147,11 @@ const listBtn = async () => {
   }
 };
 const aplayerBtn = (e: any) => {
-  // 获取音乐组件内容的宽度
-  let w = document.getElementsByClassName("aplayer-info")[0].clientWidth;
   // 获取整个音乐组件
   let ele: any = document.getElementsByClassName("aplayer-body")[0];
   ishsow.value = !ishsow.value; //音乐组件内容是否为可视状态
   if (document.body.clientWidth > 1000) return; //如果页面可视宽度小于1000  直接返回
-  ele.style.left = w < 334 ? "0px" : "-66px";
+  ele.style.left = ishsow.value ? "0px" : "-66px";
 };
 window.addEventListener("resize", function () {
   nextTick(() => {
