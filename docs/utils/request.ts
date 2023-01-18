@@ -60,7 +60,7 @@ service.interceptors.response.use((res:any) => {
         }
     },
     error => {
-        console.log('err' + error)
+        // console.log('err' + error)
         let { message } = error;
         if (message == "Network Error") {
             message = "后端接口连接异常";
@@ -71,10 +71,10 @@ service.interceptors.response.use((res:any) => {
         else if (message.includes("Request failed with status code")) {
             message = "系统接口" + message.substr(message.length - 3) + "异常";
         }
-        ElMessage.error({
-            message: message,
-            duration: 5 * 1000
-        })
+        // ElMessage.error({
+        //     message: message,
+        //     duration: 5 * 1000
+        // })
         return Promise.reject(error)
     }
 )
