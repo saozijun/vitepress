@@ -17,7 +17,8 @@ const getShowTask = computed(() => {
 watch(getShowTask,(newVal, oldVal) => {
     // 播放新加入列表的
     oldVal = oldVal?oldVal:[]
-    if(newVal)sessionStorage.setItem("audiolist",newVal);
+    console.log('newVal',newVal,oldVal);
+    if(newVal)sessionStorage.setItem("audiolist",JSON.stringify(newVal));
     nextTick(() => {
       if (ap.value && newVal.length!=oldVal.length) {
         audioList.value = newVal;
@@ -70,32 +71,33 @@ onMounted(async () => {
     }
     audioList.value = [];
     if(sessionStorage.getItem("audiolist")){
-        audioList.value = sessionStorage.getItem("audiolist")
+      let temp:any  = sessionStorage.getItem("audiolist")
+      audioList.value = JSON.parse(temp)
     }else{
-        // 获取我的喜欢歌曲列表
-        const { playlist: data } = await playlist();
-        let id = ""; //设置初始id
-        let tempList = []; //初始化音乐url列表
-        //循环把id 相加 用来下一次请求
-        for (let i = 0; i < data.tracks.length; i++) {
-        id += data.tracks[i].id + (data.tracks.length != i + 1 ? "," : "");
-        tempList[i] = {
-            id: data.tracks[i].id,
-            name: data.tracks[i].name,
-            artist: data.tracks[i].ar[0].name,
-            url: "",
-            cover: data.tracks[i].al.picUrl,
-            lrc: "",
-        };
-        }
-        const { lrc } = await lyric({ id: data.tracks[0].id });
-        //获取全部音乐的url
-        let { data: musicList } = await songUrl({ id });
-        tempList[0].lrc = lrc.lyric;
-        //音乐数据列表赋值
-        audioList.value = combined(tempList, musicList);
-        commit("setAudiolist", audioList.value);
+       // 获取我的喜欢歌曲列表
+      const { playlist: data } = await playlist();
+      let id = ""; //设置初始id
+      let tempList = []; //初始化音乐url列表
+      //循环把id 相加 用来下一次请求
+      for (let i = 0; i < data.tracks.length; i++) {
+      id += data.tracks[i].id + (data.tracks.length != i + 1 ? "," : "");
+      tempList[i] = {
+          id: data.tracks[i].id,
+          name: data.tracks[i].name,
+          artist: data.tracks[i].ar[0].name,
+          url: "",
+          cover: data.tracks[i].al.picUrl,
+          lrc: "",
+      };
+      }
+      const { lrc } = await lyric({ id: data.tracks[0].id });
+      //获取全部音乐的url
+      let { data: musicList } = await songUrl({ id });
+      tempList[0].lrc = lrc.lyric;
+      //音乐数据列表赋值
+      audioList.value = combined(tempList, musicList);
     }
+    commit("setAudiolist", audioList.value);
     //实例化 APlayer
     ap.value = new APlayer({
       container: aplayer.value,
@@ -105,18 +107,14 @@ onMounted(async () => {
       lrcType: 2,
       theme: "#47ba86",
     });
-    ElNotification.success({
-      title: '🎸 success',
-      message: h('音乐组件加载完成~ 🎸 左下角可以操作哟~'),
-      showClose: false,
-      duration:4000,
-    })
      //等dom加载完成监听按钮事件
     nextTick(() => {
         commit("setaudioShow", true);
         document.getElementsByClassName("aplayer-miniswitcher")[0].addEventListener("click", aplayerBtn);
         // 获取音乐组件内容
         let ele: any = document.getElementsByClassName("aplayer-body")[0];
+        console.log('ele',ele);
+        
         //如果页面可视宽度小于1000 并且为音乐组件内容隐藏时
         ele.style.left = document.body.clientWidth < 1000 && !ishsow.value ? "-66px" : "0";
     });
@@ -126,7 +124,7 @@ onMounted(async () => {
     });
     commit("setAP", ap);  
   }catch(error:any){
-    console.log(error);
+    console.log('error',error);
     
     let {response} = error
     ElNotification.error({
@@ -136,6 +134,12 @@ onMounted(async () => {
       duration:4000,
    })
   }
+  ElNotification.success({
+      title: '🎸 success',
+      message: '音乐组件加载完成~ 🎸 左下角可以操作哟~',
+      showClose: false,
+      duration:4000,
+    })
 });
 //根据当前歌曲获取歌词赋值
 const listBtn = async () => {
@@ -174,18 +178,21 @@ window.addEventListener("resize", function () {
 </script>
 
 <template>
-  <div ref="aplayer" id="aplayer"></div>
+  <div class="box">
+    <div ref="aplayer" id="aplayer"></div>
+  </div>
 </template>
-<style lang="less" scoped >
+<style lang="less" scoped>
 :deep(.aplayer.aplayer-fixed .aplayer-body) {
   bottom: 100px;
   left: 0;
   overflow: hidden;
 }
-:deep(.aplayer.aplayer-fixed) {
+:deep(.aplayer.aplayer-fixed .aplayer-list) {
+  position: relative;
   bottom: 100px;
+  border:none;
 }
-
 :deep(.aplayer.aplayer-fixed .aplayer-info) {
   border-bottom:1px solid #e9e9e9;
 }
@@ -201,8 +208,12 @@ window.addEventListener("resize", function () {
   :deep(.aplayer.aplayer-fixed .aplayer-body) {
     bottom: 10px;
   }
+  :deep(.aplayer.aplayer-fixed .aplayer-list) {
+    bottom: 10px;
+  }
   :deep(.aplayer.aplayer-fixed) {
     bottom: 10px;
   }
 }
+  
 </style>
