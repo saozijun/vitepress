@@ -28,8 +28,8 @@ features:
   title: 面试题 ✨
   details: ✨ 高频面试题
 - icon: 🎸  
-  title: 网易云音乐 🎸
-  details: 🎸 vue3+element
+  title: 音乐 🎸
+  details: 🎸APlayer+网易云音乐api+vue3
 - icon: 📕 
   title:  笔记 📕 
   details: 📕 持续整理中...

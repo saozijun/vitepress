@@ -66,8 +66,15 @@ export default defineConfig({
         ]
       },
       {
-        text: '🎸 网易云音乐',
+        text: '🎸 音乐',
         link: '/music/music' 
+      },
+      {
+        text: '笔记 📕',
+        items: [
+          { text: 'vitepress部署 📦', link: '/vite/vitepress'  },
+        ]
+        
       }
     ],
     sidebar: {

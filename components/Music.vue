@@ -17,7 +17,6 @@ const getShowTask = computed(() => {
 watch(getShowTask,(newVal, oldVal) => {
     // 播放新加入列表的
     oldVal = oldVal?oldVal:[]
-    console.log('newVal',newVal,oldVal);
     if(newVal)sessionStorage.setItem("audiolist",JSON.stringify(newVal));
     nextTick(() => {
       if (ap.value && newVal.length!=oldVal.length) {
@@ -80,15 +79,15 @@ onMounted(async () => {
       let tempList = []; //初始化音乐url列表
       //循环把id 相加 用来下一次请求
       for (let i = 0; i < data.tracks.length; i++) {
-      id += data.tracks[i].id + (data.tracks.length != i + 1 ? "," : "");
-      tempList[i] = {
-          id: data.tracks[i].id,
-          name: data.tracks[i].name,
-          artist: data.tracks[i].ar[0].name,
-          url: "",
-          cover: data.tracks[i].al.picUrl,
-          lrc: "",
-      };
+        id += data.tracks[i].id + (data.tracks.length != i + 1 ? "," : "");
+        tempList[i] = {
+            id: data.tracks[i].id,
+            name: data.tracks[i].name,
+            artist: data.tracks[i].ar[0].name,
+            url: "",
+            cover: data.tracks[i].al.picUrl,
+            lrc: "",
+        };
       }
       const { lrc } = await lyric({ id: data.tracks[0].id });
       //获取全部音乐的url
@@ -113,8 +112,6 @@ onMounted(async () => {
         document.getElementsByClassName("aplayer-miniswitcher")[0].addEventListener("click", aplayerBtn);
         // 获取音乐组件内容
         let ele: any = document.getElementsByClassName("aplayer-body")[0];
-        console.log('ele',ele);
-        
         //如果页面可视宽度小于1000 并且为音乐组件内容隐藏时
         ele.style.left = document.body.clientWidth < 1000 && !ishsow.value ? "-66px" : "0";
     });
@@ -122,10 +119,12 @@ onMounted(async () => {
         //当文件就绪可以开始播放时触发（缓冲已足够开始时）
         listBtn(); //获取歌曲的歌词事件
     });
+    ap.value.on("error", (e:any) => {
+      getList()
+    });
     commit("setAP", ap);  
   }catch(error:any){
-    console.log('error',error);
-    
+    // console.log('error',error);
     let {response} = error
     ElNotification.error({
       title: '🎸 Error',
@@ -141,6 +140,25 @@ onMounted(async () => {
       duration:4000,
     })
 });
+//重新获取歌曲的播放链接
+const getList = async () => {
+  // debugger
+  // console.log(ap.value.audio,audioList.value);
+  ap.value.pause();
+  for (let i = 0; i < audioList.value.length; i++) {
+    if (audioList.value[i].url === ap.value.audio.src) {
+      const { data } = await songUrl({ id: audioList.value[i].id });
+        audioList.value[i].url = data[0].url;
+        ap.value.list.clear();
+        ap.value.list.add([...audioList.value]);
+        commit("setAudiolist", audioList.value);
+        ap.value.list.switch(i);
+        ap.value.play();
+        return;
+    }
+    if (i + 1 == audioList.value.length) ap.value.play();
+  }
+};
 //根据当前歌曲获取歌词赋值
 const listBtn = async () => {
   ap.value.pause();
@@ -171,6 +189,8 @@ window.addEventListener("resize", function () {
     // 获取音乐组件内容
     let ele: any = document.getElementsByClassName("aplayer-body")[0];
     //如果页面可视宽度小于1000 并且为音乐组件内容隐藏时
+    // console.log(ele,'ele');
+    
     ele.style.left = document.body.clientWidth < 1000 && !ishsow.value ? "-66px" : "0";
   });
 });
@@ -200,6 +220,7 @@ window.addEventListener("resize", function () {
   bottom: 28px;
   left: 30px;
   right: auto;
+  text-shadow:none;
 }
 :deep(.aplayer .aplayer-lrc p) {
   color: #47ba86;
@@ -213,6 +234,9 @@ window.addEventListener("resize", function () {
   }
   :deep(.aplayer.aplayer-fixed) {
     bottom: 10px;
+  }
+  :deep(.aplayer.aplayer-fixed .aplayer-lrc) {
+    text-shadow: -1px -1px 0 #fff;
   }
 }
   
