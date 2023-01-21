@@ -1,5 +1,5 @@
 {
-    "index_name": "vitepress",
+    "index_name": "volcano",
     "start_urls": ["https://saozijun.github.io/"],
     "rateLimit": 8,
     "maxDepth": 10,
