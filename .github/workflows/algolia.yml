@@ -1,4 +1,4 @@
-name: algolia
+name: volcano
 on:
   push:
     branches:
