@@ -206,7 +206,21 @@ window.addEventListener("resize", function () {
 :deep(.aplayer.aplayer-fixed .aplayer-body) {
   bottom: 100px;
   left: 0;
+  background: #fff0;
   overflow: hidden;
+}
+:deep(.aplayer .aplayer-list ol li) {
+  &:hover{
+    background: #e9e9e952;
+    color: #47ba86;
+  }
+}
+:deep(.aplayer .aplayer-list ol li.aplayer-list-light) {
+  background: #e9e9e952;
+  color: #47ba86;
+}
+:deep(.aplayer) {
+  background: none;
 }
 :deep(.aplayer.aplayer-fixed .aplayer-list) {
   position: relative;
