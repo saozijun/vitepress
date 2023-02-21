@@ -9,11 +9,11 @@ hero:
     alt: volcnao
   actions:
     - theme: brand
-      text: 🌋 volcnao
-      link: 
-    - theme: alt
-      text: 零基础 🥚
+      text: 开始阅读
       link: /web/FrontEnd/tutorial
+    - theme: alt
+      text: 面试题 ✨
+      link: /interview/HTML
 features:
 - icon: 💻
   title: 前端 💻
