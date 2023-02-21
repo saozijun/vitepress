@@ -17,13 +17,13 @@ export default defineConfig({
   ],
   titleTemplate: '喜晴',
   themeConfig: {
-    // algolia: {
-    //   appId: 'Q83U8ZY9O1', // 需要替换
-    //   apiKey: '297a8c4b85b208fdbc4d734487cebd0b', // 需要替换
-    //   indexName: 'volcano', // 需要替换
-    //   placeholder: '请输入关键词',
-    //   buttonText: '搜索',
-    // },
+    algolia: {
+      appId: 'Q83U8ZY9O1', // 需要替换
+      apiKey: '297a8c4b85b208fdbc4d734487cebd0b', // 需要替换
+      indexName: 'volcano', // 需要替换
+      placeholder: '请输入关键词',
+      buttonText: '搜索',
+    },
     logo: '/logo2.gif',
     siteTitle: "『 volcano 🌋 』",
     outlineTitle: '🍇🍈🍉🍊🍋🍌🍍🥭🍎🍏',
