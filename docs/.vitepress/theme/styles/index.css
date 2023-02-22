@@ -24,12 +24,6 @@
     font-weight: bold;
 }
 
-.DocSearch-Input {
-    background: #c9c9c936;
-    font-size: 15px;
-    padding: 14px;
-}
-
 @media (min-width: 768px) {
     .DocSearch-Button {
         justify-content: flex-start;
