@@ -69,7 +69,7 @@ onMounted(async () => {
       APlayer = aplayerTemp.default
     }
     audioList.value = [];
-    if (sessionStorage.getItem("audiolist")) {
+    if ( false && sessionStorage.getItem("audiolist")) {
       let temp: any = sessionStorage.getItem("audiolist")
       audioList.value = JSON.parse(temp)
     } else {
@@ -102,7 +102,7 @@ onMounted(async () => {
       container: aplayer.value,
       audio: audioList.value,
       fixed: true,
-      autoplay: true,
+      autoplay: false,
       lrcType: 2,
       theme: "#47ba86",
     });
@@ -117,7 +117,7 @@ onMounted(async () => {
     });
     ap.value.on("canplay", () => {
       //当文件就绪可以开始播放时触发（缓冲已足够开始时）
-      listBtn(); //获取歌曲的歌词事件
+      listBtn(); //获取歌曲的歌词
     });
     ap.value.on("error", (e: any) => {
       getList()
@@ -174,7 +174,7 @@ const listBtn = async () => {
         return;
       }
     }
-    // if (i + 1 == audioList.value.length) ap.value.play();
+    if (i + 1 == audioList.value.length) ap.value.play();
   }
 };
 const aplayerBtn = (e: any) => {
@@ -189,9 +189,9 @@ window.addEventListener("resize", function () {
     // 获取音乐组件内容
     let ele: any = document.getElementsByClassName("aplayer-body")[0];
     //如果页面可视宽度小于1000 并且为音乐组件内容隐藏时
-    // console.log(ele,'ele');
-
-    ele.style.left = document.body.clientWidth < 1000 && !ishsow.value ? "-66px" : "0";
+    try{
+      ele.style.left = document.body.clientWidth < 1000 && !ishsow.value ? "-66px" : "0";
+    }catch{}
   });
 });
 
