@@ -2,6 +2,7 @@ import DefaultTheme from 'vitepress/theme'
 import MyLayout from '../../../components/MyLayout.vue'
 import Music from '../../../components/Music.vue'
 import SearchSong from '../../../components/SearchSong.vue'
+import Collection from '../../../components/collection.vue'
 import "element-plus/dist/index.css"
 import './styles/index.css'
 import ElementPlus from 'element-plus'
@@ -15,5 +16,6 @@ export default {
     app.use(store)
     app.component('Music',Music)
     app.component('SearchSong',SearchSong)
+    app.component('Collection',Collection)
   }
 }

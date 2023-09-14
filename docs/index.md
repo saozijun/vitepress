@@ -15,24 +15,25 @@ hero:
       text: 面试题 ✨
       link: /interview/HTML
 features:
-- icon: 💻
-  title: 前端 💻
-  details: 💻 HTML CSS JS TS Vue React
-- icon: 👾 
-  title: 后端 👾
-  details: 👾 Node+Express java C++
-- icon: 🌌 
-  title: 小程序 🌌 
-  details: 🌌 整理中...
-- icon: ✨ 
-  title: 面试题 ✨
-  details: ✨ 高频面试题
-- icon: 🎸  
-  title: 音乐 🎸
-  details: 🎸APlayer+网易云音乐api+vue3
+# - icon: 💻
+#   title: 前端 💻
+#   details: 💻 HTML CSS JS TS Vue React
+# - icon: 👾 
+#   title: 后端 👾
+#   details: 👾 Node+Express java C++
+# - icon: 🌌 
+#   title: 小程序 🌌 
+#   details: 🌌 整理中...
+# - icon: ✨ 
+#   title: 面试题 ✨
+#   details: ✨ 高频面试题
+# - icon: 🎸  
+#   title: 音乐 🎸
+#   details: 🎸APlayer+网易云音乐api+vue3
 - icon: 📕 
   title:  笔记 📕 
   details: 📕 持续整理中...
+
 ---
 
 <style>

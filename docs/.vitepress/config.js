@@ -76,6 +76,10 @@ export default defineConfig({
         text: '🎸 音乐',
         link: '/music/music' 
       },
+      // {
+      //   text: '✨ 数藏',
+      //   link: '/collection/index' 
+      // },
       {
         text: '笔记 📕',
         items: [

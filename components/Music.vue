@@ -174,7 +174,7 @@ const listBtn = async () => {
         return;
       }
     }
-    if (i + 1 == audioList.value.length) ap.value.play();
+    // if (i + 1 == audioList.value.length) ap.value.play();
   }
 };
 const aplayerBtn = (e: any) => {

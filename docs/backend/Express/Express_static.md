@@ -1,3 +1,11 @@
+<!--
+ * @Description: 
+ * @Version: 2.0
+ * @Author: volcano
+ * @Date: 2022-12-13 22:04:42
+ * @LastEditors: volcano
+ * @LastEditTime: 2023-09-14 20:19:28
+-->
 # static 静态资源
 
 ### express.static
@@ -25,8 +33,8 @@ app.use(express.static('public'))
 ```
 **并且在文件夹 - `public` 里放一张图片！！**
 
-![图 4](img/814f99d1a25e503928c880d3becce08c71b4aa03c985c9acbbdd9a7059feb1e9.png)  
+![图 4](img/1694693800614.jpg)  
 
 随后你就可以在开启服务了的地址接口去访问到这张图片👇
 
-![图 5](img/8c41db03537d7a83cddab5c6c35940e215e44fd89fd160ee592d8a990bf704d1.png)  
+![图 5](img/1694693938825.jpg)  
