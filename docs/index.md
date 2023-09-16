@@ -1,9 +1,8 @@
 ---
 layout: home
 title: Vlocano
-titleTemplate: false
+titleTemplate: true
 ---
-
 <home/>
 <style>
     :root {
