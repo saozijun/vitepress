@@ -60,7 +60,7 @@ onMounted(async () => {
     title: 'Tip',
     message: '音乐组件加载中...',
     showClose: false,
-    duration: 2000,
+    duration: 1000,
   })
   try {
     let APlayer = null
@@ -137,7 +137,7 @@ onMounted(async () => {
     title: '🎸 success',
     message: '音乐组件加载完成~ 🎸 左下角可以操作哟~',
     showClose: false,
-    duration: 4000,
+    duration: 3000,
   })
 });
 //重新获取歌曲的播放链接
@@ -161,7 +161,7 @@ const getList = async () => {
 };
 //根据当前歌曲获取歌词赋值
 const listBtn = async () => {
-  ap.value.pause();
+  // ap.value.pause();
   for (let i = 0; i < audioList.value.length; i++) {
     if (audioList.value[i].url === ap.value.audio.src) {
       if (audioList.value[i].lrc === "") {
@@ -174,7 +174,7 @@ const listBtn = async () => {
         return;
       }
     }
-    if (i + 1 == audioList.value.length) ap.value.play();
+    // if (i + 1 == audioList.value.length) ap.value.play();
   }
 };
 const aplayerBtn = (e: any) => {
@@ -261,12 +261,12 @@ window.addEventListener("resize", function () {
   }
 
   :deep(.aplayer .aplayer-list ol li) {
-    background-color: #282828;
+    background-color: #0d0d0d7b;
   }
 
   :deep(.aplayer .aplayer-list ol li) {
     &:hover {
-      background: #fff;
+      background: #ffffff91;
       color: #47ba86;
     }
   }
