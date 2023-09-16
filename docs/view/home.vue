@@ -1,7 +1,11 @@
 <!--这里创建一个vantajs的挂载区域-->
 <template>
 	<div class="video_box">
-		<video src="../public/Render.mp4" muted autoplay loop></video>
+		<video v-if="!curDeviceIsMobile" src="../public/Render.mp4" muted autoplay loop></video>
+			<!-- 如果是移动端，上述样式会不兼容，故降级为图片显示 -->
+		<div v-else class="image-container">
+			<p class="logo-text">Volcano</p>
+		</div>
 		<div class="svg-wrapper">
 			<svg height="60" width="190" xmlns="http://www.w3.org/2000/svg">
 				<rect class="shape" height="60" width="190"></rect>
@@ -19,7 +23,8 @@
 	</div>
 </template>
 <script setup>
-import { onMounted, onBeforeUnmount, ref, watch, nextTick } from 'vue'
+import { onMounted, onBeforeUnmount, ref, watch, nextTick,onBeforeMount } from 'vue'
+import { isMobile } from "../utils/mobile"
 const textColor = ref('#fff')
 onMounted(() => {
 	//监听主题按钮的事件变化
@@ -34,6 +39,13 @@ onMounted(() => {
 		})
 	})
 })
+
+const curDeviceIsMobile = ref(false)
+
+onBeforeMount(() => {
+	curDeviceIsMobile.value = isMobile();
+});
+
 </script>
 <style lang="less" scoped>
 .video_box {
@@ -78,6 +90,12 @@ onMounted(() => {
 			transition: stroke-width 1s, stroke-dashoffset 1s, stroke-dasharray 1s;
 		}
 	}
+}
+.image-container{
+	text-align: center;
+	font-size: 48px;
+	margin-top: 40%;
+	color: #74340d;
 }
 .card_box{
 	display: flex;

@@ -52,9 +52,9 @@
     background-color: #f5f5f6;
 } */
 
-/* @media (max-width: 999px) {
+@media (max-width: 999px) {
     .VPNavBarMenu{
-        min-width: 600px;
+        min-width: 500px;
     }
     .VPNavBarSearch{
         min-width: 200px;
@@ -71,9 +71,9 @@
 }
 @media (min-width: 768px) { 
     .VPNavBarMenu{
-        min-width: 600px;
+        min-width: 500px;
     }
     .VPNavBarSearch{
-        min-width: 200px;
+        min-width: auto;
     }
-} */
+}
