@@ -24,17 +24,17 @@ const props = defineProps<IRecentlyPosts>()
 
 <style scoped lang="less">
 @card-color: #7ccfff;
-
 .card p {
     font-size: 17px;
     font-weight: 400;
     line-height: 20px;
-    color: #666;
+    color: var(--vp-c-text-1);
     font-weight: bold;
 }
 
 .card {
     width: 32%;
+    opacity: 1;
 }
 
 
@@ -69,7 +69,7 @@ const props = defineProps<IRecentlyPosts>()
     display: block;
     position: relative;
     max-width: 100%;
-    background-color: #f2f8f9;
+    background-color: var(--vp-c-bg-alt);
     border-radius: 4px;
     padding: 32px 24px;
     margin: 12px;
