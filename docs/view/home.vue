@@ -8,6 +8,7 @@
 		</div>
 		<button class="btn svg-wrapper">
 			<span><a href="/web/FrontEnd/tutorial">Start</a></span>
+			
 		</button>
 	</div>
 	<div class="about">
