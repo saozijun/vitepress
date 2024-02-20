@@ -2,7 +2,6 @@ import DefaultTheme from 'vitepress/theme'
 import MyLayout from '../../../components/MyLayout.vue'
 import Music from '../../../components/Music.vue'
 import SearchSong from '../../../components/SearchSong.vue'
-import Collection from '../../../components/collection.vue'
 import Crad from '../../../components/Crad.vue'
 import home from '../../view/home.vue'
 import "element-plus/dist/index.css"
@@ -20,6 +19,5 @@ export default {
     app.component('Music',Music)
     app.component('Crad',Crad)
     app.component('SearchSong',SearchSong)
-    app.component('Collection',Collection)
   }
 }

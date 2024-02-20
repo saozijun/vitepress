@@ -256,13 +256,13 @@ window.addEventListener("resize", function () {
     background-color: #fff;
   }
 
-  :deep(.aplayer .aplayer-info .aplayer-music .aplayer-title) {
-    color: #000;
-  }
+  // :deep(.aplayer .aplayer-info .aplayer-music .aplayer-title) {
+  //   color: #000;
+  // }
 
-  :deep(.aplayer .aplayer-list ol li) {
-    background-color: #0d0d0d7b;
-  }
+  // :deep(.aplayer .aplayer-list ol li) {
+  //   background-color: #0d0d0d7b;
+  // }
 
   :deep(.aplayer .aplayer-list ol li) {
     &:hover {
@@ -271,10 +271,10 @@ window.addEventListener("resize", function () {
     }
   }
 
-  :deep(.aplayer .aplayer-list ol li.aplayer-list-light) {
-    background: #fff;
-    color: #47ba86;
-  }
+  // :deep(.aplayer .aplayer-list ol li.aplayer-list-light) {
+  //   background: #fff;
+  //   color: #47ba86;
+  // }
 
   :deep(.aplayer.aplayer-fixed .aplayer-list) {
     bottom: 10px;

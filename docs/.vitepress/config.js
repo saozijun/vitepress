@@ -52,34 +52,23 @@ export default defineConfig({
           { text: '👾 Node', link: '/backend/Node/Node' },
         ]
       },
-      // {
-      //   text: '✨ 面试题',
-      //   items: [
-      //     { text: '✨ HTML', link: '/interview/HTML' },
-      //     { text: '✨ CSS', link: '/interview/Css' },
-      //     { text: '✨ JavaScript', link: '/interview/Js' },
-      //     // { text: '✨ TypeScript', link: '/interview/Ts' },
-      //     { text: '✨ Vue', link: '/interview/Vue' },
-      //     { text: '✨ React', link: '/interview/React' },
-      //     { text: '✨ 手写代码', link: '/interview/handWrite' },
-      //     { text: '✨ 算法基础', link: '/interview/algorithm' },
-      //   ]
-      // },
       {
-        text: '💨 小游戏',
+        text: '✨ 面试题',
         items: [
-          { text: '🎮 贪吃蛇', link: 'https://snakets.rth1.one/' },
-          // { text: '🎰 电子密码输入系统', link: 'https://hwqdbz.rth1.one/' },
+          { text: '✨ HTML', link: '/interview/HTML' },
+          { text: '✨ CSS', link: '/interview/Css' },
+          { text: '✨ JavaScript', link: '/interview/Js' },
+          // { text: '✨ TypeScript', link: '/interview/Ts' },
+          { text: '✨ Vue', link: '/interview/Vue' },
+          { text: '✨ React', link: '/interview/React' },
+          { text: '✨ 手写代码', link: '/interview/handWrite' },
+          { text: '✨ 算法基础', link: '/interview/algorithm' },
         ]
       },
-      // {
-      //   text: '🎸 音乐',
-      //   link: '/music/music' 
-      // },
-      // {
-      //   text: '✨ 数藏',
-      //   link: '/collection/index' 
-      // },
+      {
+        text: '🎸 音乐',
+        link: '/music/music' 
+      },
       {
         text: '📕 笔记',
         items: [

@@ -32,7 +32,7 @@
     <!-- <el-button type="primary" @click="toggleDark">{{ isDark?'dark':'light' }}</el-button> -->
     <el-table
       :data="songData"
-      style="width: 100%;" height="400"
+      style="width: 100%; height: 60vh;"
       v-loading="searchLoading"
       v-if="songData.length > 0 || searchLoading"
     >
@@ -136,6 +136,7 @@ const songChange = async (query: string) => {
   if(query=="") return
   searchLoading.value = true;
   const data: any = await search({ keywords: query});
+  songData.value = []
   data.result?.songs.map((item: any) => {
     item.songName = item.artists[0].name;
   });
@@ -162,11 +163,12 @@ const remoteMethod = async (query: string) => {
 </script>
 <style scoped lang="less">
 .box {
-  width: 560px;
+  width: 80%;
   margin: 50px auto;
   font-size: 14px;
   color: #409eff;
-  border: 1px solid #409eff;
+  // border: 1px solid #409eff;
+  box-shadow: 1px 1px 10px #f7f7f757;
   padding: 20px;
   border-radius: 10px;
   :deep(.el-table__body),:deep(.el-table__header){
