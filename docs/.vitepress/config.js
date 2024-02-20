@@ -65,25 +65,14 @@ export default defineConfig({
       //     { text: '✨ 算法基础', link: '/interview/algorithm' },
       //   ]
       // },
-      {
-        text: '💨 小游戏',
-        items: [
-          { text: '🎮 贪吃蛇', link: 'https://snakets.rth1.one/' },
-          // { text: '🎰 电子密码输入系统', link: 'https://hwqdbz.rth1.one/' },
-        ]
-      },
       // {
       //   text: '🎸 音乐',
       //   link: '/music/music' 
       // },
-      // {
-      //   text: '✨ 数藏',
-      //   link: '/collection/index' 
-      // },
       {
         text: '📕 笔记',
         items: [
-          { text: 'vitepress部署 📦', link: '/vite/vitepress'  },
+          { text: '日常记✍🏻', link: '/notes/h5Location'},
         ]
         
       }
@@ -349,9 +338,19 @@ export default defineConfig({
           ],
         },
       ],
+      "/notes/": [
+        {
+          text: "日常记✍🏻",
+          collapsible: true,
+          items: [
+            { text: 'Vue3 h5获取定位', link: '/notes/h5Location'},
+            { text: 'VitePress部署', link: '/notes/vitepress'},
+          ],
+        }
+      ],
     },
     footer: {
-      copyright: 'Copyright © 2023-present volcano'
+      copyright: 'Copyright © 2025-present volcano'
     }
   }
 })

@@ -8,6 +8,7 @@ const { Layout } = DefaultTheme;
     <template #layout-bottom>
       <ClientOnly>
         <Music/>
+        <SplashCursor />
       </ClientOnly>
     </template>
   </Layout>

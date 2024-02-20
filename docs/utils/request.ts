@@ -4,7 +4,7 @@ import { ElMessage, ElLoading } from 'element-plus';
 // 创建axios实例
 const service = axios.create({
     // 服务接口请求
-    baseURL: 'https://www.saozijun.vip',
+    baseURL: 'https://www.saozijun.top',
     // 超时设置
     // timeout: 15000,
     withCredentials: true,

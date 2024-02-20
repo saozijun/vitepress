@@ -2,8 +2,11 @@ import DefaultTheme from 'vitepress/theme'
 import MyLayout from '../../../components/MyLayout.vue'
 import Music from '../../../components/Music.vue'
 import SearchSong from '../../../components/SearchSong.vue'
-import Collection from '../../../components/collection.vue'
 import Crad from '../../../components/Crad.vue'
+import SplashCursor from '../../../components/SplashCursor.vue'
+import ShinyText from '../../../components/ShinyText.vue'
+import InfiniteMenu from '../../../components/InfiniteMenu.vue'
+import FallingText from '../../../components/FallingText.vue'
 import home from '../../view/home.vue'
 import "element-plus/dist/index.css"
 import './styles/index.css'
@@ -20,6 +23,9 @@ export default {
     app.component('Music',Music)
     app.component('Crad',Crad)
     app.component('SearchSong',SearchSong)
-    app.component('Collection',Collection)
+    app.component('SplashCursor',SplashCursor)
+    app.component('ShinyText',ShinyText)
+    app.component('InfiniteMenu',InfiniteMenu)
+    app.component('FallingText',FallingText)
   }
 }
