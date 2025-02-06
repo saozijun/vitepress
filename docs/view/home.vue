@@ -206,7 +206,7 @@ const start = () => {
 @media screen and (max-width: 1150px) {
 	.vanta-menu{
 		max-width: 685px;
-		height: 800px;
+		height: 70vh;
 	}
 }
 @media screen and (max-width: 968px) {
