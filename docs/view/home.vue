@@ -43,16 +43,18 @@
 import { ref, onBeforeMount } from 'vue'
 import { isMobile } from "../utils/mobile"
 import { useRouter } from 'vitepress';
+import img1 from '../notes/img/1.png'
+import img111 from '../notes/img/111.png'
 const router = useRouter();
 const items = [
   {
-    image: '../notes/img/1.png',
+    image: img1,
     link: '/notes/h5Location',
     title: '📍 H5 定位 📍 ',
     description: '在本地测试的时候遇到一点问题'
   },
   {
-    image: '../notes/img/111.png',
+    image: img111,
     link: '/notes/vitepress',
     title: '博客首次部署',
     description: '📦 VitePress部署 遇到的问题 和 解决方案📦'
