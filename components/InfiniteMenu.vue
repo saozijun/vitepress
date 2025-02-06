@@ -1233,7 +1233,7 @@ canvas {
 
 
 .action-button:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(80, 214, 109, 0.637);
 }
 
 .action-button-icon {
@@ -1284,7 +1284,7 @@ canvas {
   position: absolute;
   font-weight: 900;
   font-size: 3rem;
-  left: 1em;
+  left: 0;
   top: 50%;
 }
 
@@ -1361,12 +1361,34 @@ canvas {
 }
 
 @media (max-width: 1500px) {
-  .face-title,
-  .face-description {
-    display: none;
-  }
+//   .face-title,
+//   .face-description {
+//     display: none;
+//   }
   .infinite-menu-container{
     width: 100%;
   }
+}
+@media (max-width: 1150px) {
+    .face-title {
+        top: 9%;
+        right: auto;
+        left: 50%;
+        font-size: 28px;
+        transform: translate(-50%, -50%) !important;
+    }
+    .action-button{
+		width: 150px !important;
+        border-radius: 150px;
+	}
+    .face-description {
+        top: 16%;
+        right: auto;
+        max-width: 100%;
+        width: 100%;
+        font-size: 18px;
+        left: 50%;
+        transform: translate(-50%, -50%) !important;
+    }
 }
 </style>

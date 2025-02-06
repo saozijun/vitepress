@@ -143,7 +143,7 @@ const start = () => {
 			position: absolute;
 			left: 0;
 			top: 0;
-			background: linear-gradient(to bottom, var(--vp-c-bg) 10%, #eeeeee00);
+			background: linear-gradient(to bottom, var(--vp-c-bg), #eeeeee00);
 			pointer-events: none;
 			z-index: 11;
 		}
@@ -201,6 +201,12 @@ const start = () => {
 	img{
 		width: 330px;
 		margin-top: -80px;
+	}
+}
+@media screen and (max-width: 1150px) {
+	.vanta-menu{
+		max-width: 685px;
+		height: 800px;
 	}
 }
 @media screen and (max-width: 968px) {
