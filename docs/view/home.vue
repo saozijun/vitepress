@@ -22,7 +22,7 @@
 		</div>
 		<div class="title" style="margin-top: 80px;">
 			<p>🔭 掌握技能</p>
-			<span>主前端，后端新手</span>
+			<span>主前端，后端新手 hover有交互哦~</span>
 		</div>
 		<div class="falling-text">
 			<FallingText
