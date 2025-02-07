@@ -9,6 +9,7 @@ import InfiniteMenu from '../../../components/InfiniteMenu.vue'
 import FallingText from '../../../components/FallingText.vue'
 import home from '../../view/home.vue'
 import "element-plus/dist/index.css"
+import 'animate.css';
 import './styles/index.css'
 import ElementPlus from 'element-plus'
 import 'aplayer/dist/APlayer.min.css'

@@ -26,7 +26,8 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from "vue";
 import { mat4, quat, vec2, vec3 } from "gl-matrix";
-import { useRouter } from "vitepress";
+import { useRouter, useData } from "vitepress";
+const { isDark } = useData();
 const router = useRouter();
 
 const discVertShaderSource = `#version 300 es
@@ -982,8 +983,7 @@ class InfiniteGridMenu {
 
     gl.enable(gl.CULL_FACE);
     gl.enable(gl.DEPTH_TEST);
-    let isDark = localStorage.getItem("vitepress-theme-appearance") === "dark";
-    if (isDark) gl.clearColor(0.141, 0.141, 0.141, 1.0);
+    if (isDark.value) gl.clearColor(0.141, 0.141, 0.141, 1.0);
     else gl.clearColor(1, 1, 1, 1.0);
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
@@ -1391,4 +1391,5 @@ canvas {
         transform: translate(-50%, -50%) !important;
     }
 }
+
 </style>

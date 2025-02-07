@@ -9,7 +9,8 @@
 				</div>
 			</div>
 			<div class="vanta-icon" :style="{ color: textColor }">
-				<img src="/logo.gif" alt="">
+				<img  @click="handleAn" ref="logoRef" src="/logo.gif" alt="">
+				<span>不要点我噢 我在锻炼！！</span>
 			</div>
 		</div>
 		<div class="title">
@@ -40,32 +41,29 @@
 	</div>
 </template>
 <script setup>
-import { ref, onBeforeMount } from 'vue'
-import { isMobile } from "../utils/mobile"
+import { ref, nextTick } from 'vue'
+import { animateCSS } from "../utils/index"
 import { useRouter } from 'vitepress';
-import img1 from '../notes/img/1.png'
-import img111 from '../notes/img/111.png'
+import { useData } from 'vitepress'
+const { site } = useData();
+const logoRef = ref()
 const router = useRouter();
-const items = [
-  {
-    image: img1,
-    link: '/notes/h5Location',
-    title: '📍 H5 定位 📍 ',
-    description: '在本地测试的时候遇到一点问题'
-  },
-  {
-    image: img111,
-    link: '/notes/vitepress',
-    title: '博客首次部署',
-    description: '📦 VitePress部署 遇到的问题 和 解决方案📦'
-  }
-];
+const items = site.value.themeConfig.sidebar['/notes/'][0].items.slice(0 , 5)
 const textColor = ref('#fff')
 
-const curDeviceIsMobile = ref(false)
-onBeforeMount(() => {
-	curDeviceIsMobile.value = isMobile();
-});
+const animateList = ['rubberBand','jello','wobble','tada','swing','headShake','shakeY','shakeX','pulse','flash','bounce','hinge', 'zoomOutUp']
+const animateIndex = ref(0)
+const animateLoading = ref(false)
+const handleAn = () => {
+	if (animateLoading.value) return
+	nextTick(async ()=>{
+		animateLoading.value = true
+		await animateCSS(logoRef.value, animateList[animateIndex.value])
+		animateIndex.value++
+		if (animateIndex.value >= animateList.length) animateIndex.value = 0
+		animateLoading.value = false
+	})
+}
 const start = () => {
 	router.go('/web/FrontEnd/tutorial')
 }
@@ -196,11 +194,17 @@ const start = () => {
 	width: 560px;
 	height: 210px;
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	span{
+		color: #999;
+		font-size: 12px;
+	}
 	img{
 		width: 330px;
 		margin-top: -80px;
+		cursor: pointer;
 	}
 }
 @media screen and (max-width: 1150px) {
