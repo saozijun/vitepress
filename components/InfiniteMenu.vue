@@ -866,7 +866,7 @@ class InfiniteGridMenu {
             const img = new Image();
             img.crossOrigin = "anonymous";
             img.onload = () => resolve(img);
-            img.src = new URL(item.image, import.meta.url).pathname;
+            img.src = new URL(item.image, import.meta.url).href;
           })
       )
     ).then((images) => {
