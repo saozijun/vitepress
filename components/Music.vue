@@ -268,14 +268,15 @@ window.addEventListener("resize", function () {
 }
 
 :deep(.aplayer .aplayer-list ol li) {
+  background-color: var(--vp-c-bg);
   &:hover {
-    background: #e9e9e952;
+    background-color: var(--vp-c-bg);
     color: #47ba86;
   }
 }
 
 :deep(.aplayer .aplayer-list ol li.aplayer-list-light) {
-  background: #e9e9e952;
+  background-color: var(--vp-c-bg);
   color: #47ba86;
 }
 
@@ -315,7 +316,7 @@ window.addEventListener("resize", function () {
   }
 
   :deep(.aplayer.aplayer-fixed .aplayer-info) {
-    background-color: #fff;
+    background-color: var(--vp-c-bg);
   }
 
   // :deep(.aplayer .aplayer-info .aplayer-music .aplayer-title) {
