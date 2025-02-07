@@ -18,12 +18,15 @@ export default defineConfig({
   titleTemplate: '喜晴',
   themeConfig: {
     algolia: {
-      appId: 'WMFM3T3COH', // 需要替换
-      apiKey: '229934eaa6dca846fa8509eeafb54d52', // 需要替换
-      indexName: 'saozijunio', // 需要替换
+      appId: 'WMFM3T3COH',
+      apiKey: '229934eaa6dca846fa8509eeafb54d52',
+      indexName: 'saozijunio',
       placeholder: '请输入关键词',
       buttonText: '搜索',
     },
+    socialLinks: [
+      { icon: 'github', link: 'https://github.com/saozijun' }
+    ],
     logo: '/logo2.gif',
     siteTitle: "『 volcano 🌋 』",
     outlineTitle: '🍇🍈🍉🍊🍋🍌🍍🥭🍎🍏',

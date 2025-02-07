@@ -9,7 +9,7 @@
 				</div>
 			</div>
 			<div class="vanta-icon" :style="{ color: textColor }">
-				<img src="../public/logo.gif" alt="">
+				<img src="/logo.gif" alt="">
 			</div>
 		</div>
 		<div class="title">

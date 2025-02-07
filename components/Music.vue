@@ -10,6 +10,7 @@ const aplayer = ref();
 const ap = ref<any>();
 const ishsow = ref<boolean>(false);
 const audioList = ref<any>([]);
+const isFirstLoad = ref(true); // 新增标志位
 // 配合watch监听播放列表audiolist的变化
 const getShowTask = computed(() => {
   return state.audiolist;
@@ -24,8 +25,12 @@ watch(getShowTask, (newVal, oldVal) => {
       ap.value.pause();
       ap.value.list.clear();
       ap.value.list.add([...audioList.value]);
-      ap.value.list.switch(0);
-      ap.value.play();
+       // 新增：仅在非首次加载时自动播放
+       if (!isFirstLoad.value) {
+        ap.value.list.switch(0);
+        ap.value.play();
+      }
+      isFirstLoad.value = false;
     }
   });
 }, { immediate: true, deep: true });
@@ -40,10 +45,9 @@ watch(getShowIdnex, (newVal, oldVal) => {
     nextTick(() => {
       ap.value.pause();
       ap.value.list.switch(newVal);
-      ap.value.play();
     });
   }
-}, { immediate: true, deep: true });
+}, { deep: true });
 //根据id合并两个对象数组
 const combined = (arr1: any, arr2: any) => {
   return arr1.map((item: any) => {
@@ -117,6 +121,7 @@ onMounted(async () => {
       getList()
     });
     commit("setAP", ap);
+    isFirstLoad.value = false;
   } catch (error: any) {
     let { response } = error
   }
@@ -285,7 +290,12 @@ window.addEventListener("resize", function () {
 }
 
 :deep(.aplayer.aplayer-fixed .aplayer-info) {
-  border-bottom: 1px solid #e9e9e9;
+  border-bottom: 1px solid var(--vp-c-bg-mute);
+  border-top: 1px solid var(--vp-c-bg-mute);
+}
+
+:deep(.aplayer .aplayer-miniswitcher){
+  background: var(--vp-c-bg-mute);
 }
 
 :deep(.aplayer.aplayer-fixed .aplayer-lrc) {
@@ -321,6 +331,9 @@ window.addEventListener("resize", function () {
       background: #ffffff91;
       color: #47ba86;
     }
+  }
+  :deep(.aplayer .aplayer-miniswitcher .aplayer-icon path){
+    fill: var(--vp-c-text-1) !important;
   }
 
   // :deep(.aplayer .aplayer-list ol li.aplayer-list-light) {
