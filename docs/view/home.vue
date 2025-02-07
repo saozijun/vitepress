@@ -45,10 +45,26 @@ import { ref, nextTick } from 'vue'
 import { animateCSS } from "../utils/index"
 import { useRouter } from 'vitepress';
 import { useData } from 'vitepress'
+import img1 from '/notes/img/1.png'
+import img111 from '/notes/img/1.png'
 const { site } = useData();
 const logoRef = ref()
 const router = useRouter();
-const items = site.value.themeConfig.sidebar['/notes/'][0].items.slice(0 , 5)
+// const items = site.value.themeConfig.sidebar['/notes/'][0].items.slice(0 , 5)
+const items = [
+	{ 
+		link: '/notes/h5Location',
+		title: '📍 H5 定位 📍', 
+		description: '在本地测试的时候遇到一点问题',
+		image: img1
+	},
+	{ 
+		link: '/notes/vitepress',
+		title: '博客首次部署', 
+		description: '📦 VitePress部署 遇到的问题 和 解决方案📦',
+		image: img111
+	}
+]
 const textColor = ref('#fff')
 
 const animateList = ['rubberBand','jello','wobble','tada','swing','headShake','shakeY','shakeX','pulse','flash','bounce','hinge', 'zoomOutUp']
@@ -216,6 +232,17 @@ const start = () => {
 @media screen and (max-width: 968px) {
 	.title{
 		text-align: center;
+	}
+	.vanta-menu{
+		&::after{
+			opacity: 0;
+		}
+		&::before{
+			opacity: 0;
+		}
+		span{
+			opacity: 0;
+		}
 	}
 	.vanta-box{
 		flex-direction: column-reverse;
