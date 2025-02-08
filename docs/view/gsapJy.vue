@@ -13,7 +13,7 @@
             </div>
         </div>
     </div>
-    <div class="wrapper-box">
+    <div class="wrapper-box" ref="wrapperBox">
         <div class="wrapper1" ref="wrapper1">
             <div class="w-b1" ref="wB1">
                 <img ref="phone" class="phone" src="../viewMd/img/iPhone.webp" alt="phone" />
@@ -41,6 +41,9 @@
 import { onMounted, ref, nextTick } from "vue";
 import { gsap } from "gsap";
 import { inBrowser } from 'vitepress'
+import imagesLoaded from 'imagesloaded';
+
+const wrapperBox = ref();
 
 // 第一个动画参数
 const wB1 = ref();
@@ -66,9 +69,9 @@ onMounted(async () => {
       const { ScrollTrigger } = gsapCj
       gsap.registerPlugin(ScrollTrigger);
     }
-    setTimeout(() => {
+    imagesLoaded(wrapperBox.value, () => {
         init();
-    }, 100);
+    });
 });
 const init = () => {
     nextTick(() => {
