@@ -80,11 +80,11 @@ onMounted(async () => {
         })
             .to(phone.value, { x: 90, y: 100, scale: 0.9, duration: 1.4 }, 0)
             .to(phone.value, { x: 110, y: 150, scale: 0.75, duration: 1 }, 1.4)
-            .to(t1.value, { x: "-60%", opacity: 1, duration: 1 }, 0)
-            .to(t2.value, { x: "85%", opacity: 1, duration: 1 }, 0)
+            .to(t1.value, { x: -158, opacity: 1, duration: 1 }, 0)
+            .to(t2.value, { x: 268, opacity: 1, duration: 1 }, 0)
             .to(k1.value, { opacity: 1, duration: 1 }, 1)
             .to(k2.value, { opacity: 1, duration: 1 }, 1)
-            .to(cloud.value, { opacity: 1, x: 340, duration: 1.5 }, 2.5)
+            .to(cloud.value, { opacity: 1, x: 300, duration: 1.5 }, 2.5)
             .to({}, { duration: 5 });
 
         // 创建一个时间轴
@@ -187,7 +187,7 @@ onMounted(async () => {
 
     .w-b1 {
         width: 960px;
-        height: 800px;
+        height: 1000px;
         position: relative;
         perspective: 1000px;
         transform-style: preserve-3d;
@@ -207,13 +207,13 @@ onMounted(async () => {
         .t1,
         .t2 {
             opacity: 0;
-            top: -110px;
+            top: -115px;
             width: 27.3%;
         }
 
         .t2 {
-            width: 33.3%;
-            top: -48px;
+            width: 33.8%;
+            top: -41px;
         }
 
         .k1,
@@ -237,7 +237,7 @@ onMounted(async () => {
 
         .cloud {
             opacity: 0;
-            top: 26%;
+            top: 205px;
             width: 8%;
         }
     }
@@ -349,6 +349,15 @@ onMounted(async () => {
     .top-text{
         .h1{
             font-size: 88px !important;
+        }
+    }
+    .wrapper1{
+        width: 100%;
+    }
+    .wrapper2{
+        width: 350px;
+        .w-b2 {
+            height: 197px;
         }
     }
 }
