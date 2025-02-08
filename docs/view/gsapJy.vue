@@ -66,8 +66,12 @@ onMounted(async () => {
       const { ScrollTrigger } = gsapCj
       gsap.registerPlugin(ScrollTrigger);
     }
+    setTimeout(() => {
+        init();
+    }, 100);
+});
+const init = () => {
     nextTick(() => {
-        // 创建一个时间轴
         gsap.timeline({
             scrollTrigger: {
                 trigger: wrapper1.value,  // 触发元素
@@ -105,7 +109,7 @@ onMounted(async () => {
             .from(tracks.value, { y: 200, scale: 1.5, duration: 2 }, 0)
             .to({}, { duration: 3 });
     });
-});
+};
 </script>
 
 <style lang="less" scoped>

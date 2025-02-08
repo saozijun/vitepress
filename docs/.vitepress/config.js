@@ -4,7 +4,7 @@ export default defineConfig({
   // base: '/docs/',
   title: 'volcnao',
   description: 'Volcano',
-  appearance: true, //主题是否可以切换
+  appearance: "dark", //主题是否可以切换
   ignoreDeadLinks: true,//设置为true后，VitePress 不会因死链接而使构建失败。true
   lang: 'zh-CN',
   lastUpdated: true,//文档最后更新时间
