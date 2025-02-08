@@ -40,8 +40,7 @@
 <script setup>
 import { onMounted, ref, nextTick } from "vue";
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-gsap.registerPlugin(ScrollTrigger);
+import { inBrowser } from 'vitepress'
 
 // 第一个动画参数
 const wB1 = ref();
@@ -61,7 +60,12 @@ const sidebar = ref();
 const tracks = ref();
 const wrapper2 = ref();
 
-onMounted(() => {
+onMounted(async () => {
+    if (inBrowser) {
+      let gsapCj = await import('gsap/ScrollTrigger')
+      const { ScrollTrigger } = gsapCj
+      gsap.registerPlugin(ScrollTrigger);
+    }
     nextTick(() => {
         // 创建一个时间轴
         gsap.timeline({
@@ -90,6 +94,7 @@ onMounted(() => {
                 start: "top center",  // 触发
                 end: "+=1000", // 结束
                 scrub: 1, // 平滑滚动同步动画
+                anticipatePin: 1, 
                 pin: wB2.value, // 固定 wB1 视图，使其停留在视口中
                 // markers: true, // 调试显示
             }
@@ -177,7 +182,6 @@ onMounted(() => {
     max-width: 960px;
     margin: 80px auto;
     padding-top: 150px;
-    padding-bottom: 100px;
     text-align: center;
     position: relative;
 
@@ -185,8 +189,10 @@ onMounted(() => {
         width: 960px;
         height: 800px;
         position: relative;
-
+        perspective: 1000px;
+        transform-style: preserve-3d;
         img {
+            backface-visibility: hidden;
             position: absolute;
             top: 0;
             left: 50%;
@@ -240,14 +246,15 @@ onMounted(() => {
 .wrapper2 {
     width: 960px;
     margin: 80px auto;
-    padding-bottom: 150px;
+    padding: 150px 0;
     text-align: center;
     position: relative;
     .w-b2 {
         width: 100%;
         height: 540px;
         position: relative;
-
+        perspective: 1000px;
+        transform-style: preserve-3d;
         .editor {
             width: 100%;
             height: 100%;
@@ -262,6 +269,7 @@ onMounted(() => {
                 position: absolute;
                 top: 0;
                 left: 0;
+                backface-visibility: hidden;
             }
 
             .monitor {
