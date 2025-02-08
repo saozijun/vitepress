@@ -26,10 +26,8 @@ watch(getShowTask, (newVal, oldVal) => {
       ap.value.list.clear();
       ap.value.list.add([...audioList.value]);
        // 新增：仅在非首次加载时自动播放
-       if (!isFirstLoad.value) {
-        ap.value.list.switch(0);
-        ap.value.play();
-      }
+       ap.value.list.switch(0);
+      //  ap.value.play();
       isFirstLoad.value = false;
     }
   });
@@ -227,7 +225,7 @@ const listBtn = async () => {
         ap.value.list.clear();
         ap.value.list.add([...audioList.value]);
         ap.value.list.switch(i);
-        ap.value.play();
+        // ap.value.play();
         return;
       }
     }
@@ -312,7 +310,7 @@ window.addEventListener("resize", function () {
 
 @media screen and (max-width: 1000px) {
   :deep(.aplayer.aplayer-fixed .aplayer-body) {
-    bottom: 10px;
+    bottom: 20px;
   }
 
   :deep(.aplayer.aplayer-fixed .aplayer-info) {
