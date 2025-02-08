@@ -16,12 +16,12 @@
     <div class="wrapper-box">
         <div class="wrapper1" ref="wrapper1">
             <div class="w-b1" ref="wB1">
-                <img ref="phone" class="phone" width="150" src="../viewMd/img/iPhone.webp" alt="phone" />
-                <img ref="t1" class="t1" width="260" src="../viewMd/img/MacBookContent.webp" alt="t1" />
-                <img ref="t2" class="t2" width="323" src="../viewMd/img/MacBookContent.webp" alt="t2" />
-                <img ref="k1" class="k1" width="780" src="../viewMd/img/MacBook.webp" alt="k1" />
-                <img ref="k2" class="k2" width="470" src="../viewMd/img/iPad.webp" alt="k2" />
-                <img ref="cloud" class="cloud" width="80" src="../viewMd/img/cloud.webp" alt="cloud" />
+                <img ref="phone" class="phone" src="../viewMd/img/iPhone.webp" alt="phone" />
+                <img ref="t1" class="t1" src="../viewMd/img/MacBookContent.webp" alt="t1" />
+                <img ref="t2" class="t2" src="../viewMd/img/MacBookContent.webp" alt="t2" />
+                <img ref="k1" class="k1" src="../viewMd/img/MacBook.webp" alt="k1" />
+                <img ref="k2" class="k2" src="../viewMd/img/iPad.webp" alt="k2" />
+                <img ref="cloud" class="cloud" src="../viewMd/img/cloud.webp" alt="cloud" />
             </div>
         </div>
         <div class="wrapper2" ref="wrapper2">
@@ -71,17 +71,17 @@ onMounted(() => {
                 end: "+=1500", // 结束
                 scrub: 1, // 平滑滚动同步动画
                 pin: wB1.value, // 固定 wB1 视图，使其停留在视口中
-                markers: true, // 调试显示
+                // markers: true, // 调试显示
             }
         })
             .to(phone.value, { x: 90, y: 100, scale: 0.9, duration: 1.4 }, 0)
-            .to(phone.value, { x: 120, y: 150, scale: 0.75, duration: 1 }, 1.4)
-            .to(t1.value, { x: -157, opacity: 1, duration: 1 }, 0)
-            .to(t2.value, { x: 268, opacity: 1, duration: 1 }, 0)
+            .to(phone.value, { x: 110, y: 150, scale: 0.75, duration: 1 }, 1.4)
+            .to(t1.value, { x: "-60%", opacity: 1, duration: 1 }, 0)
+            .to(t2.value, { x: "85%", opacity: 1, duration: 1 }, 0)
             .to(k1.value, { opacity: 1, duration: 1 }, 1)
             .to(k2.value, { opacity: 1, duration: 1 }, 1)
             .to(cloud.value, { opacity: 1, x: 340, duration: 1.5 }, 2.5)
-            .to({}, { duration: 3 });
+            .to({}, { duration: 5 });
 
         // 创建一个时间轴
         gsap.timeline({
@@ -91,7 +91,7 @@ onMounted(() => {
                 end: "+=1000", // 结束
                 scrub: 1, // 平滑滚动同步动画
                 pin: wB2.value, // 固定 wB1 视图，使其停留在视口中
-                markers: true, // 调试显示
+                // markers: true, // 调试显示
             }
         })
             .to(editorRef.value, { opacity: 1, duration: 2 }, 0)
@@ -108,7 +108,7 @@ onMounted(() => {
     width: 100%;
 
     .top-text {
-        width: 960px;
+        max-width: 960px;
         height: calc(100vh - 200px);
         margin: 0 auto;
         position: relative;
@@ -121,6 +121,7 @@ onMounted(() => {
 
             .h1 {
                 text-align: center;
+                transition: .4s;
                 font-size: 8rem;
                 line-height: 1.2;
                 font-weight: bold;
@@ -173,7 +174,7 @@ onMounted(() => {
     overflow: hidden;
 }
 .wrapper1 {
-    width: 960px;
+    max-width: 960px;
     margin: 80px auto;
     padding-top: 150px;
     padding-bottom: 100px;
@@ -181,8 +182,8 @@ onMounted(() => {
     position: relative;
 
     .w-b1 {
-        width: 100%;
-        height: calc(100vh - 200px);
+        width: 960px;
+        height: 800px;
         position: relative;
 
         img {
@@ -193,29 +194,33 @@ onMounted(() => {
         }
 
         .phone {
+            width: 17%;
             z-index: 111;
         }
 
         .t1,
         .t2 {
             opacity: 0;
-            top: -14.5%;
+            top: -110px;
+            width: 27.3%;
         }
 
         .t2 {
-            margin-top: 20px;
-            top: -9%;
+            width: 33.3%;
+            top: -48px;
         }
 
         .k1,
         .k2 {
             opacity: 0;
+            width: 49%;
         }
 
         .k1 {
             left: 29%;
             top: -2%;
             z-index: 2;
+            width: 81%;
         }
 
         .k2 {
@@ -227,6 +232,7 @@ onMounted(() => {
         .cloud {
             opacity: 0;
             top: 26%;
+            width: 8%;
         }
     }
 }
@@ -327,6 +333,23 @@ onMounted(() => {
     100% {
         transform: translateY(10px) rotate(-45deg);
         opacity: 0;
+    }
+}
+
+
+@media screen and (max-width: 1200px) {
+    .top-text{
+        .h1{
+            font-size: 88px !important;
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .top-text{
+        .h1{
+            font-size: 58px !important;
+        }
     }
 }
 </style>
