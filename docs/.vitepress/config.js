@@ -24,9 +24,9 @@ export default defineConfig({
       placeholder: '请输入关键词',
       buttonText: '搜索',
     },
-    socialLinks: [
-      { icon: 'github', link: 'https://github.com/saozijun' }
-    ],
+    // socialLinks: [
+    //   { icon: 'github', link: 'https://github.com/saozijun' }
+    // ],
     logo: '/logo2.gif',
     siteTitle: "『 volcano 🌋 』",
     outlineTitle: '🍇🍈🍉🍊🍋🍌🍍🥭🍎🍏',
@@ -53,6 +53,12 @@ export default defineConfig({
         text: '👾 后端',
         items: [
           { text: '👾 Node', link: '/backend/Node/Node' },
+        ]
+      },
+      {
+        text: 'gsap练习',
+        items: [
+          { text: '🦸‍♂ 仿剪映官网', link: '/viewMd/gsapJy' },
         ]
       },
       // {
