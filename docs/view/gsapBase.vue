@@ -59,7 +59,48 @@
 
     <div class="base4" ref="base4Ref">
         <div class="b4Box" ref="b4BoxRef">
-            <div class="b4Box-inner" ref="b4BoxInnerRef"></div>
+            <ul ref="b4BoxInnerRef">
+                <li class="b4-i-title">早上吃什么？</li>
+                <li class="b4-i-box">
+                    <div>燕麦片</div>
+                    <div>小米粥</div>
+                    <div>豆浆</div>
+                    <div>油条</div>
+                </li>
+                <li class="b4-i-box">
+                    <div>牛油果</div>
+                    <div>面包</div>
+                    <div>玉米</div>
+                    <div>煎蛋</div>
+                </li>
+                <li class="b4-i-title">中午吃什么？</li>
+                <li class="b4-i-box">
+                    <div>叉烧饭</div>
+                    <div>烧鸭饭</div>
+                    <div>煲仔饭</div>
+                    <div>黄焖鸡</div>
+                </li>
+                <li class="b4-i-box">
+                    <div>云吞面</div>
+                    <div>螺蛳粉</div>
+                    <div>猪肠粉</div>
+                    <div>老友粉</div>
+                </li>
+                <li class="b4-i-title">晚上吃什么？</li>
+                <li class="b4-i-box">
+                    <div>一碗香</div>
+                    <div>酱爆茄子</div>
+                    <div>清炒西兰花</div>
+                    <div>西红柿炒蛋</div>
+                </li>
+                <li class="b4-i-box">
+                    <div>皮蛋瘦肉粥</div>
+                    <div>生滚鱼片粥</div>
+                    <div>猪润粥</div>
+                    <div>海鲜炒饭</div>
+                </li>
+                <li class="b4-i-title">夜宵吃什么？</li>
+            </ul>
         </div>
     </div>
 </template>
@@ -97,6 +138,7 @@ const b3t2Ref = ref(null);
 const base4Ref = ref(null);
 const b4BoxRef = ref(null);
 const b4BoxInnerRef = ref(null);
+
 onMounted(async () => {
     if (inBrowser) {
         let gsapCj = await import('gsap/ScrollTrigger')
@@ -203,18 +245,24 @@ const init = () => {
             .to(b3t1Ref.value, { opacity: 1, x: 300, duration: 3 }, 5)
             .to(b3t2Ref.value, { opacity: 1, x: -300, duration: 3 }, 5)
             .to({}, { duration: 3 }, 8)
+
         // 效果5
-        gsap.timeline({
-            scrollTrigger: {
-                trigger: base4Ref.value,
-                start: "top center",
-                end: "+=1500",
-                scrub: 1,
-                anticipatePin: 1,
-                pin: base4Ref.value,
-                // markers: true, // 调试显示
-            }
-        })
+        const items4 = gsap.utils.toArray(".b4Box li");
+        items4.forEach((item, i) => {
+            gsap.from(
+                item,
+                {
+                    x: i % 2 == 0 ? 1000 : -1000,
+                    duration: 1,
+                    scrollTrigger: {
+                        trigger: item,
+                        start: "top 100%",
+                        scrub: 1,
+                        toggleActions: "play reverse play reverse",
+                    },
+                }
+            );
+        });
     });
 };
 </script>
@@ -390,23 +438,43 @@ const init = () => {
     }
 }
 .base4 {
-    width: 100%;
-
+    width: 100vw;
+    overflow: hidden;
     .b4Box {
-        max-width: 960px;
+        width: 100%;
         margin: 0 auto;
-        height: calc(100vh - 200px);
+        height: 460vh;
         position: relative;
-
-        .b4Box-inner {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
+        ul {
+            width: 100%;
+            height: 100%;
             position: absolute;
-            background-color: #0000001f;
-            left: 50%;
+            left: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
             top: 0;
+            .b4-i-box{
+                width: 100%;
+                display: flex;
+                gap: 20px;
+                div{
+                    flex-shrink: 0;
+                    width: 40vw;
+                    height: 50vh;
+                    background-color: #0000001f;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    font-size: 5vw;
+                    color: var(--vp-c-text-1);
+                }
+            }
+            .b4-i-title{
+                width: fit-content;
+                font-size: 12vw;
+                line-height: 12vw;
+            }
         }
     }
 }
