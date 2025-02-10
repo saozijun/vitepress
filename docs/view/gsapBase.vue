@@ -174,7 +174,7 @@ const init = () => {
                 scrub: 1,
                 anticipatePin: 1,
                 pin: base3Ref.value,
-                markers: true, // 调试显示
+                // markers: true, // 调试显示
             }
         })
             .to(b3BoxInnerRef.value, { width: 250, duration: 3 }, 0)
