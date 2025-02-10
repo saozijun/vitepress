@@ -1,106 +1,108 @@
 <template>
-    <div class="container">
-        <div class="top-text">
-            <div class="top-title">
-                <ShinyText text="GSAP" :disabled="false" :speed="3" className="h1" />
-                <ShinyText text="base" :disabled="false" :speed="3" className="h2" />
-            </div>
-            <div class="page-more">
-                滑动浏览更多
-                <span></span>
-                <span></span>
-                <span></span>
+    <div class="gsap-base">
+        <div class="container">
+            <div class="top-text">
+                <div class="top-title">
+                    <ShinyText text="GSAP" :disabled="false" :speed="3" className="h1" />
+                    <ShinyText text="base" :disabled="false" :speed="3" className="h2" />
+                </div>
+                <div class="page-more">
+                    滑动浏览更多
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="base1">
-        <div class="list1">
-            <ul>
-                <li v-for="i in 3" :key="i"></li>
+        <div class="base1">
+            <div class="list1">
+                <ul>
+                    <li v-for="i in 3" :key="i"></li>
+                </ul>
+            </div>
+            <div class="list2">
+                <ul>
+                    <li v-for="i in 3" :key="i"></li>
+                </ul>
+            </div>
+        </div>
+        <div class="base2" ref="base2Ref">
+            <div ref="tips" class="tips"></div>
+            <ul ref="b2BoxRef">
+                <li ref="b1"></li>
+                <li ref="b2"></li>
+                <li ref="b3"></li>
+                <li ref="b4"></li>
+                <li ref="b5"></li>
+                <li ref="b6"></li>
+                <li ref="b7"></li>
+                <li ref="b8"></li>
+                <li ref="b9"></li>
+                <li ref="b10"></li>
+                <li ref="b11"></li>
+                <li ref="b12"></li>
+                <li ref="b14"></li>
+                <li ref="b13">
+                    <ShinyText text="volcano" :disabled="false" :speed="3" className="b13-text" />
+                </li>
             </ul>
         </div>
-        <div class="list2">
-            <ul>
-                <li v-for="i in 3" :key="i"></li>
-            </ul>
-        </div>
-    </div>
-    <div class="base2" ref="base2Ref">
-        <div ref="tips" class="tips"></div>
-        <ul ref="b2BoxRef">
-            <li ref="b1"></li>
-            <li ref="b2"></li>
-            <li ref="b3"></li>
-            <li ref="b4"></li>
-            <li ref="b5"></li>
-            <li ref="b6"></li>
-            <li ref="b7"></li>
-            <li ref="b8"></li>
-            <li ref="b9"></li>
-            <li ref="b10"></li>
-            <li ref="b11"></li>
-            <li ref="b12"></li>
-            <li ref="b14"></li>
-            <li ref="b13">
-                <ShinyText text="volcano" :disabled="false" :speed="3" className="b13-text" />
-            </li>
-        </ul>
-    </div>
 
-    <div class="base3" ref="base3Ref">
-        <div class="b3Box" ref="b3BoxRef">
-            <div class="b3Box-inner" ref="b3BoxInnerRef">
-                <img ref="b3ImgRef" src="../viewMd/img/bg.jpg" alt="">
-                <div ref="b3t1Ref"></div>
-                <div ref="b3t2Ref"></div>
+        <div class="base3" ref="base3Ref">
+            <div class="b3Box" ref="b3BoxRef">
+                <div class="b3Box-inner" ref="b3BoxInnerRef">
+                    <img ref="b3ImgRef" src="../viewMd/img/bg.jpg" alt="">
+                    <div ref="b3t1Ref"></div>
+                    <div ref="b3t2Ref"></div>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="base4" ref="base4Ref">
-        <div class="b4Box" ref="b4BoxRef">
-            <ul ref="b4BoxInnerRef">
-                <li class="b4-i-title">早上吃什么？</li>
-                <li class="b4-i-box">
-                    <div>燕麦片</div>
-                    <div>小米粥</div>
-                    <div>豆浆</div>
-                    <div>油条</div>
-                </li>
-                <li class="b4-i-box">
-                    <div>牛油果</div>
-                    <div>面包</div>
-                    <div>玉米</div>
-                    <div>煎蛋</div>
-                </li>
-                <li class="b4-i-title">中午吃什么？</li>
-                <li class="b4-i-box">
-                    <div>叉烧饭</div>
-                    <div>烧鸭饭</div>
-                    <div>煲仔饭</div>
-                    <div>黄焖鸡</div>
-                </li>
-                <li class="b4-i-box">
-                    <div>云吞面</div>
-                    <div>螺蛳粉</div>
-                    <div>猪肠粉</div>
-                    <div>老友粉</div>
-                </li>
-                <li class="b4-i-title">晚上吃什么？</li>
-                <li class="b4-i-box">
-                    <div>一碗香</div>
-                    <div>酱爆茄子</div>
-                    <div>清炒西兰花</div>
-                    <div>西红柿炒蛋</div>
-                </li>
-                <li class="b4-i-box">
-                    <div>皮蛋瘦肉粥</div>
-                    <div>生滚鱼片粥</div>
-                    <div>猪润粥</div>
-                    <div>海鲜炒饭</div>
-                </li>
-                <li class="b4-i-title">夜宵吃什么？</li>
-            </ul>
+        <div class="base4" ref="base4Ref">
+            <div class="b4Box" ref="b4BoxRef">
+                <ul ref="b4BoxInnerRef">
+                    <li class="b4-i-title">早上吃什么？</li>
+                    <li class="b4-i-box">
+                        <div>燕麦片</div>
+                        <div>小米粥</div>
+                        <div>豆浆</div>
+                        <div>油条</div>
+                    </li>
+                    <li class="b4-i-box">
+                        <div>牛油果</div>
+                        <div>面包</div>
+                        <div>玉米</div>
+                        <div>煎蛋</div>
+                    </li>
+                    <li class="b4-i-title">中午吃什么？</li>
+                    <li class="b4-i-box">
+                        <div>叉烧饭</div>
+                        <div>烧鸭饭</div>
+                        <div>煲仔饭</div>
+                        <div>黄焖鸡</div>
+                    </li>
+                    <li class="b4-i-box">
+                        <div>云吞面</div>
+                        <div>螺蛳粉</div>
+                        <div>猪肠粉</div>
+                        <div>老友粉</div>
+                    </li>
+                    <li class="b4-i-title">晚上吃什么？</li>
+                    <li class="b4-i-box">
+                        <div>一碗香</div>
+                        <div>酱爆茄子</div>
+                        <div>清炒西兰花</div>
+                        <div>西红柿炒蛋</div>
+                    </li>
+                    <li class="b4-i-box">
+                        <div>皮蛋瘦肉粥</div>
+                        <div>生滚鱼片粥</div>
+                        <div>猪润粥</div>
+                        <div>海鲜炒饭</div>
+                    </li>
+                    <li class="b4-i-title">夜宵吃什么？</li>
+                </ul>
+            </div>
         </div>
     </div>
 </template>
@@ -249,25 +251,49 @@ const init = () => {
         // 效果5
         const items4 = gsap.utils.toArray(".b4Box li");
         items4.forEach((item, i) => {
-            gsap.from(
-                item,
-                {
-                    x: i % 2 == 0 ? 1000 : -1000,
-                    duration: 1,
-                    scrollTrigger: {
-                        trigger: item,
-                        start: "top 100%",
-                        scrub: 1,
-                        toggleActions: "play reverse play reverse",
-                    },
-                }
-            );
+            if (i === items4.length - 1) {
+                gsap.from(
+                    item,
+                    {
+                        y: 200,
+                        x: 200,
+                        opacity: 0,
+                        duration: 1,
+                        scrollTrigger: {
+                            trigger: item,
+                            start: "top 100%",
+                            scrub: 1,
+                            toggleActions: "play reverse play reverse",
+                        },
+                    }
+                );
+            } else {
+                gsap.from(
+                    item,
+                    {
+                        x: i % 2 == 0 ? 200 : -200,
+                        duration: .4,
+                        scrollTrigger: {
+                            trigger: item,
+                            start: "top 80%",
+                            scrub: 1,
+                            toggleActions: "play reverse play reverse",
+                        },
+                    }
+                );
+            }
+
         });
     });
 };
 </script>
 
 <style lang="less" scoped>
+.gsap-base {
+    width: 100%;
+    overflow: hidden;
+}
+
 .container {
     width: 100%;
 
@@ -412,13 +438,15 @@ const init = () => {
             top: 0;
             left: 50%;
             transform: translate(-50%, -50%);
+
             // overflow: hidden;
-            img{
+            img {
                 width: 100%;
                 height: 100%;
                 border-radius: 15px;
             }
-            div{
+
+            div {
                 opacity: 0;
                 width: 100%;
                 height: 100%;
@@ -428,8 +456,9 @@ const init = () => {
                 left: 0;
                 z-index: -1;
                 background-color: #00000028;
-                box-shadow: 2.34vw 2.08vw 1.3vw rgba(0,0,0,.11);
-                &:nth-child(3){
+                box-shadow: 2.34vw 2.08vw 1.3vw rgba(0, 0, 0, .11);
+
+                &:nth-child(3) {
                     z-index: -2;
                     background-color: #5f5f5f28;
                 }
@@ -437,14 +466,17 @@ const init = () => {
         }
     }
 }
+
 .base4 {
-    width: 100vw;
+    width: 100%;
     overflow: hidden;
+
     .b4Box {
         width: 100%;
         margin: 0 auto;
-        height: 460vh;
+        height: 440vh;
         position: relative;
+
         ul {
             width: 100%;
             height: 100%;
@@ -454,30 +486,34 @@ const init = () => {
             flex-direction: column;
             gap: 20px;
             top: 0;
-            .b4-i-box{
+
+            .b4-i-box {
                 width: 100%;
                 display: flex;
                 gap: 20px;
-                div{
+
+                div {
                     flex-shrink: 0;
                     width: 40vw;
-                    height: 50vh;
+                    height: 400px;
                     background-color: #0000001f;
                     display: flex;
                     justify-content: center;
                     align-items: center;
-                    font-size: 5vw;
+                    font-size: 4vw;
                     color: var(--vp-c-text-1);
                 }
             }
-            .b4-i-title{
+
+            .b4-i-title {
                 width: fit-content;
-                font-size: 12vw;
+                font-size: 8vw;
                 line-height: 12vw;
             }
         }
     }
 }
+
 @keyframes arrowMove1 {
     0% {
         transform: translateY(0) rotate(-45deg);
@@ -515,18 +551,40 @@ const init = () => {
 }
 
 @media screen and (max-width: 1200px) {
-    .top-text{
-        .h1{
+    .top-text {
+        .h1 {
             font-size: 88px !important;
+        }
+    }
+
+    .b4-i-box {
+        div {
+            width: 70vw !important;
+            height: 300px !important;
         }
     }
 }
 
 @media screen and (max-width: 768px) {
-    .top-text{
-        .h1{
+    .top-text {
+        .h1 {
             font-size: 78px !important;
         }
+    }
+
+    .b4-i-box {
+        div {
+            height: 200px !important;
+        }
+    }
+
+    .b4-i-title {
+        width: fit-content;
+        font-size: 12vw !important;
+    }
+
+    .b4Box {
+        height: 250vh !important;
     }
 }
 </style>
