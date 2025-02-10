@@ -51,7 +51,7 @@ onMounted(async () => {
     tempList[0].lrc = lrc.lyric;
     //音乐数据列表赋值
     audioList.value = combined(tempList, musicList);
-    if (audioList.value[0].url == '') return 
+    if (!audioList.value[0].url) return 
     //实例化 APlayer
     ap.value = new APlayer({
       container: aplayer.value,
