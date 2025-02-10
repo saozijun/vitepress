@@ -51,6 +51,7 @@ onMounted(async () => {
     tempList[0].lrc = lrc.lyric;
     //音乐数据列表赋值
     audioList.value = combined(tempList, musicList);
+    if (audioList.value[0].url == '') return 
     //实例化 APlayer
     ap.value = new APlayer({
       container: aplayer.value,
@@ -62,7 +63,6 @@ onMounted(async () => {
     });
     //等dom加载完成监听按钮事件
     nextTick(() => {
-      commit("setaudioShow", true);
       document.getElementsByClassName("aplayer-miniswitcher")[0].addEventListener("click", aplayerBtn);
       // 获取音乐组件内容
       let ele: any = document.getElementsByClassName("aplayer-body")[0];
@@ -76,7 +76,6 @@ onMounted(async () => {
     ap.value.on("error", (e: any) => {
       // getList()
     });
-    commit("setAP", ap);
     isFirstLoad.value = false;
   } catch (error: any) {
     let { response } = error

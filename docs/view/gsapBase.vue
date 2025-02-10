@@ -51,7 +51,15 @@
         <div class="b3Box" ref="b3BoxRef">
             <div class="b3Box-inner" ref="b3BoxInnerRef">
                 <img ref="b3ImgRef" src="../viewMd/img/bg.jpg" alt="">
+                <div ref="b3t1Ref"></div>
+                <div ref="b3t2Ref"></div>
             </div>
+        </div>
+    </div>
+
+    <div class="base4" ref="base4Ref">
+        <div class="b4Box" ref="b4BoxRef">
+            <div class="b4Box-inner" ref="b4BoxInnerRef"></div>
         </div>
     </div>
 </template>
@@ -83,6 +91,12 @@ const base3Ref = ref(null);
 const b3BoxRef = ref(null);
 const b3BoxInnerRef = ref(null);
 const b3ImgRef = ref(null);
+const b3t1Ref = ref(null);
+const b3t2Ref = ref(null);
+
+const base4Ref = ref(null);
+const b4BoxRef = ref(null);
+const b4BoxInnerRef = ref(null);
 onMounted(async () => {
     if (inBrowser) {
         let gsapCj = await import('gsap/ScrollTrigger')
@@ -185,7 +199,22 @@ const init = () => {
                 boxShadow: "2.34vw 2.08vw 1.3vw rgba(0,0,0,.11)",
                 duration: 3
             }, 3)
-            .from(b3ImgRef.value, { opacity: 0, duration: 5 }, 3);
+            .from(b3ImgRef.value, { opacity: 0, duration: 5 }, 3)
+            .to(b3t1Ref.value, { opacity: 1, x: 300, duration: 3 }, 5)
+            .to(b3t2Ref.value, { opacity: 1, x: -300, duration: 3 }, 5)
+            .to({}, { duration: 3 }, 8)
+        // 效果5
+        gsap.timeline({
+            scrollTrigger: {
+                trigger: base4Ref.value,
+                start: "top center",
+                end: "+=1500",
+                scrub: 1,
+                anticipatePin: 1,
+                pin: base4Ref.value,
+                // markers: true, // 调试显示
+            }
+        })
     });
 };
 </script>
@@ -335,15 +364,52 @@ const init = () => {
             top: 0;
             left: 50%;
             transform: translate(-50%, -50%);
-            overflow: hidden;
+            // overflow: hidden;
             img{
                 width: 100%;
                 height: 100%;
+                border-radius: 15px;
+            }
+            div{
+                opacity: 0;
+                width: 100%;
+                height: 100%;
+                border-radius: 15px;
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: -1;
+                background-color: #00000028;
+                box-shadow: 2.34vw 2.08vw 1.3vw rgba(0,0,0,.11);
+                &:nth-child(3){
+                    z-index: -2;
+                    background-color: #5f5f5f28;
+                }
             }
         }
     }
 }
+.base4 {
+    width: 100%;
 
+    .b4Box {
+        max-width: 960px;
+        margin: 0 auto;
+        height: calc(100vh - 200px);
+        position: relative;
+
+        .b4Box-inner {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            position: absolute;
+            background-color: #0000001f;
+            left: 50%;
+            top: 0;
+        }
+    }
+}
 @keyframes arrowMove1 {
     0% {
         transform: translateY(0) rotate(-45deg);
