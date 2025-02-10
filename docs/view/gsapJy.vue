@@ -75,6 +75,7 @@ onMounted(async () => {
 });
 const init = () => {
     nextTick(() => {
+        // 创建时间轴
         gsap.timeline({
             scrollTrigger: {
                 trigger: wrapper1.value,  // 触发元素
@@ -94,7 +95,7 @@ const init = () => {
             .to(cloud.value, { opacity: 1, x: 300, duration: 1.5 }, 2.5)
             .to({}, { duration: 5 });
 
-        // 创建一个时间轴
+        // 第二个动画
         gsap.timeline({
             scrollTrigger: {
                 trigger: wrapper2.value,  // 触发元素

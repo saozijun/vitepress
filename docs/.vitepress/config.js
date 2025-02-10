@@ -56,9 +56,10 @@ export default defineConfig({
         ]
       },
       {
-        text: 'gsap练习',
+        text: '🦸‍♂ gsap练习',
         items: [
-          { text: '🦸‍♂ 仿剪映官网', link: '/viewMd/gsapJy' },
+          { text: '🎈 基础练习', link: '/viewMd/gsapBase' },
+          { text: '✂︎ 仿剪映官网', link: '/viewMd/gsapJy' },
         ]
       },
       // {
@@ -353,18 +354,18 @@ export default defineConfig({
           collapsible: true,
           items: [
             { 
-              text: 'Vue3 h5获取定位', 
+              text: '📔 Vue3 h5获取定位', 
               link: '/notes/h5Location',
               title: '📍 H5 定位 📍', 
               description: '在本地测试的时候遇到一点问题',
-              image: '1.png'
+              image: 'f1.jpeg'
             },
             { 
-              text: 'VitePress部署',
+              text: '📔 VitePress部署',
               link: '/notes/vitepress',
-              title: '博客首次部署', 
-              description: '📦 VitePress部署 遇到的问题 和 解决方案📦',
-              image: '111.png'
+              title: '📦 博客部署', 
+              description: '📦 VitePress部署 遇到的问题 和 解决方案 📦',
+              image: 'f2.jpeg'
             },
           ],
         }

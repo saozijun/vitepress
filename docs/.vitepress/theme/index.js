@@ -8,6 +8,7 @@ import InfiniteMenu from '../../../components/InfiniteMenu.vue'
 import FallingText from '../../../components/FallingText.vue'
 
 import gsapJy from '../../view/gsapJy.vue'
+import gsapBase from '../../view/gsapBase.vue'
 import home from '../../view/home.vue'
 import "element-plus/dist/index.css"
 import 'animate.css';
@@ -23,6 +24,7 @@ export default {
     app.use(store)
     app.component('home',home)
     app.component('gsapJy',gsapJy)
+    app.component('gsapBase',gsapBase)
     app.component('Music',Music)
     app.component('SearchSong',SearchSong)
     app.component('SplashCursor',SplashCursor)

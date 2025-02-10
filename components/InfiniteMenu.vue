@@ -1342,6 +1342,7 @@ canvas {
 .action-button {
   position: absolute;
   left: 50%;
+  border-color: var(--vp-c-bg);
 }
 
 .action-button.active {
@@ -1378,9 +1379,10 @@ canvas {
         transform: translate(-50%, -50%) !important;
     }
     .action-button{
-		width: 150px !important;
-        border-radius: 150px;
-	}
+      width: 150px !important;
+      border-radius: 150px;
+      border-color: var(--vp-c-green-darker);
+    }
     .face-description {
         top: 16%;
         right: auto;

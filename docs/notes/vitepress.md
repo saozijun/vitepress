@@ -71,29 +71,3 @@ const { Layout } = DefaultTheme;
   </Layout>
 </template>
 ```
-### nav-bar-title-before
-![效果图](./img/111.png)
-
-### nav-bar-content-before
-![效果图](./img/222.png)
-
-### sidebar-nav-before
-![效果图](./img/333.png)
-
-### home-hero-before
-![效果图](./img/444.png)
-
-### home-features-before
-![效果图](./img/555.png)
-
-### doc-footer-before
-![效果图](./img/666.png)
-- `doc-footer-before`和`doc-after`类似 
-- `doc-before`就是在文章的顶部
-### aside-top
-![效果图](./img/777.png)
-- aside的插槽都是在右边的锚点导航栏
-
-### layout-bottom
-![效果图](./img/888.png)
-在每个页面左下角 我用来放音乐组件 
