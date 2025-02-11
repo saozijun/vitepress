@@ -375,7 +375,7 @@ const init = () => {
                 { opacity: 0, y: 60, scale: 0, x: 0 },
                 { opacity: 1, y: 0, scale: 1, x: i % 2 !== 0 ? 60 : -60, duration: 2 }
             );
-            tl.to(item, { opacity: 0, y: -60, x: i % 2 !== 0 ? 250 : -250, scale: 0, duration: 2 });
+            tl.to(item, { opacity: 0, y: -60, x: i % 2 !== 0 ? -60 : 60, scale: 0, duration: 2 });
         });
         
         const items6 = gsap.utils.toArray(".b5BoxText li");
