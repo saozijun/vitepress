@@ -117,6 +117,15 @@
                 </li>
             </ul>
         </div>
+
+        <div class="base6" ref="base6Ref">
+            <ul ref="b6BoxRef" class="b6Box">
+                <li v-for="i in 10" :key="i">
+                    <ShinyText text="🦪" :disabled="false" :speed="4" className="b6text" />
+                </li>
+                <img ref="b6Img" src="../viewMd/img/eat.gif" alt="">
+            </ul>
+        </div>
     </div>
 </template>
 
@@ -157,6 +166,7 @@ const b4BoxInnerRef = ref(null);
 const base5Ref = ref(null);
 const b5BoxRef = ref(null);
 
+const b6Img = ref(null);
 onMounted(async () => {
     if (inBrowser) {
         let gsapCj = await import('gsap/ScrollTrigger')
@@ -339,6 +349,42 @@ const init = () => {
                     },
                 }
             );
+        });
+
+        // 效果 7
+        const items7 = gsap.utils.toArray(".b6Box li");
+        items7.forEach((item, i) => {
+            gsap.to(
+                item,
+                {
+                    rotate: i * - 36,
+                    duration: 1,
+                    scrollTrigger: {
+                        trigger: item,
+                        start: "top 80%",
+                        scrub: 1,
+                        end: "+=400",
+                        toggleActions: "play reverse play reverse",
+                    },
+                }
+            );
+            if (i === items7.length - 1){
+                gsap.from(
+                    b6Img.value,
+                    {
+                        scale: 0,
+                        opacity: 0,
+                        duration: 1,
+                        scrollTrigger: {
+                            trigger: b6Img.value,
+                            start: "top 80%",
+                            scrub: 1,
+                            end: "+=400",
+                            toggleActions: "play reverse play reverse",
+                        },
+                    }
+                );
+            }
         });
     });
 };
@@ -571,7 +617,7 @@ const init = () => {
 
 .base5{
     width: 100%;
-    padding-bottom: 500px;
+    padding-bottom: 200px;
     position: relative;
     .b5Box{
         display: grid;
@@ -611,6 +657,38 @@ const init = () => {
             .b3text{
                 background-color: #606060;
             }
+        }
+    }
+}
+
+.base6{
+    width: 100%;
+    height: 100vh;
+    // padding-bottom: 500px;
+    .b6Box{
+        max-width: 996px;
+        height: 100%;
+        margin: 0 auto;
+        position: relative;
+        li{
+            width: 100px;
+            height: 200px;
+            background-color: #0000001f;
+            transform-origin: 50% 220%;
+            position: absolute;
+            left: 50%;
+            top: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transform: translateX(-50%) rotateX(45deg);
+        }
+        img{
+            position: absolute;
+            left: 51%;
+            top: 45%;
+            transform: translate(-50%, -50%);
+            width: 150px;
         }
     }
 }
@@ -690,7 +768,13 @@ const init = () => {
         grid-template-columns: repeat(1, 80px) !important;
     }
     .base5{
-        padding-bottom: 400px;
+        padding-bottom: 200px;
+    }
+
+    .b6Box{
+        img{
+            top: 50% !important;
+        }
     }
 }
 </style>
