@@ -104,6 +104,19 @@
                 </ul>
             </div>
         </div>
+
+        <div class="base5" ref="base5Ref">
+            <ul ref="b5BoxRef" class="b5Box">
+                <li v-for="i in 20" :key="i">
+                    <ShinyText text="🍲" :disabled="false" :speed="4" className="b3text" />
+                </li>
+            </ul>
+            <ul class="b5BoxText">
+                <li v-for="i in 10" :key="i">
+                    <ShinyText text="- 配 -" :disabled="false" :speed="3" className="b3text" />
+                </li>
+            </ul>
+        </div>
     </div>
 </template>
 
@@ -140,6 +153,9 @@ const b3t2Ref = ref(null);
 const base4Ref = ref(null);
 const b4BoxRef = ref(null);
 const b4BoxInnerRef = ref(null);
+
+const base5Ref = ref(null);
+const b5BoxRef = ref(null);
 
 onMounted(async () => {
     if (inBrowser) {
@@ -283,6 +299,46 @@ const init = () => {
                 );
             }
 
+        });
+
+        // 效果6
+        const items5 = gsap.utils.toArray(".b5Box li");
+        items5.forEach((item, i) => {
+            gsap.to(
+                item,
+                {
+                    x: i % 2 != 0 ? 60 : -60,
+                    duration: 1,
+                    opacity: 1,
+                    scale: 1,
+                    scrollTrigger: {
+                        trigger: item,
+                        start: "top 80%",
+                        scrub: 1,
+                        end: "+=400",
+                        toggleActions: "play reverse play reverse",
+                    },
+                }
+            );
+        });
+        const items6 = gsap.utils.toArray(".b5BoxText li");
+        items6.forEach((item, i) => {
+            gsap.from(
+                item,
+                {
+                    y: 100,
+                    duration: 1,
+                    opacity: 0,
+                    scale: 0,
+                    scrollTrigger: {
+                        trigger: item,
+                        start: "top 80%",
+                        scrub: 1,
+                        end: "+=400",
+                        toggleActions: "play reverse play reverse",
+                    },
+                }
+            );
         });
     });
 };
@@ -474,13 +530,12 @@ const init = () => {
     .b4Box {
         width: 100%;
         margin: 0 auto;
-        height: 440vh;
         position: relative;
 
         ul {
             width: 100%;
-            height: 100%;
-            position: absolute;
+            position: relative;
+            padding-bottom: 200px;
             left: 0;
             display: flex;
             flex-direction: column;
@@ -509,6 +564,52 @@ const init = () => {
                 width: fit-content;
                 font-size: 8vw;
                 line-height: 12vw;
+            }
+        }
+    }
+}
+
+.base5{
+    width: 100%;
+    padding-bottom: 500px;
+    position: relative;
+    .b5Box{
+        display: grid;
+        grid-template-columns: repeat(2, 150px);
+        gap: 10px;
+        justify-content: center;
+        li{
+            height: 100px;
+            border-radius: 10px;
+            background-color: #0000001f;
+            // opacity: 0;
+            transform: scale(0);
+            text-align: center;
+            line-height: 100px;
+            font-size: 40px;
+            &:nth-child(2n){
+                background-color: #bcccc43a;
+            }
+            .b3text{
+                background-color: #ffd7a92d;
+            }
+        }
+    }
+    .b5BoxText{
+        position: absolute;
+        left: 50%;
+        top: 0;
+        transform: translateX(-50%);
+        display: grid;
+        grid-template-columns: repeat(1, 150px);
+        gap: 10px;
+        justify-content: center;
+        li{
+            text-align: center;
+            height: 100px;
+            line-height: 100px;
+            .b3text{
+                background-color: #606060;
             }
         }
     }
@@ -559,7 +660,7 @@ const init = () => {
 
     .b4-i-box {
         div {
-            width: 70vw !important;
+            width: 60vw !important;
             height: 300px !important;
         }
     }
@@ -582,9 +683,14 @@ const init = () => {
         width: fit-content;
         font-size: 12vw !important;
     }
-
-    .b4Box {
-        height: 250vh !important;
+    .b5Box{
+        grid-template-columns: repeat(2, 100px) !important;
+    }
+    .b5BoxText{
+        grid-template-columns: repeat(1, 80px) !important;
+    }
+    .base5{
+        padding-bottom: 400px;
     }
 }
 </style>
