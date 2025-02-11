@@ -1,5 +1,5 @@
 <template>
-    <div class="gsap-base">
+    <div class="gsap-base" ref="wrapperBox">
         <div class="container">
             <div class="top-text">
                 <div class="top-title">
@@ -141,6 +141,10 @@
 import { onMounted, ref, nextTick } from "vue";
 import { gsap } from "gsap";
 import { inBrowser } from 'vitepress'
+import imagesLoaded from 'imagesloaded';
+
+const wrapperBox = ref(null);
+
 const base2Ref = ref(null);
 const b2BoxRef = ref(null);
 
@@ -183,7 +187,9 @@ onMounted(async () => {
         const { ScrollTrigger } = gsapCj
         gsap.registerPlugin(ScrollTrigger);
     }
-    init();
+    imagesLoaded(wrapperBox.value, () => {
+        init();
+    });
 });
 const init = () => {
     nextTick(async () => {
