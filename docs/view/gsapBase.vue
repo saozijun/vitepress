@@ -131,7 +131,9 @@
                 <li v-for="i in 10" :key="i">
                     <ShinyText text="🦪" :disabled="false" :speed="4" className="b6text" />
                 </li>
-                <img ref="b6Img" src="../viewMd/img/eat.gif" alt="">
+                <div ref="b6Img">
+                    <img src="../viewMd/img/eat.gif" alt="">
+                </div>
             </ul>
         </div>
     </div>
@@ -721,12 +723,15 @@ const init = () => {
             align-items: center;
             transform: translateX(-50%) rotateX(45deg);
         }
-        img{
+        >div{
             position: absolute;
             left: 51%;
-            top: 360px;
+            top: 430px;
             transform: translate(-50%, -50%);
             width: 150px;
+            img{
+                width: 100%;
+            }
         }
     }
 }
