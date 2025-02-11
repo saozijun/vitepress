@@ -706,6 +706,7 @@ const init = () => {
             height: 200px;
             background-color: #0000001f;
             transform-origin: 50% 220%;
+            border-radius: 10px;
             position: absolute;
             left: 50%;
             top: 0;
@@ -717,7 +718,7 @@ const init = () => {
         img{
             position: absolute;
             left: 51%;
-            top: 45%;
+            top: 360px;
             transform: translate(-50%, -50%);
             width: 150px;
         }
@@ -800,11 +801,6 @@ const init = () => {
     }
     .base5{
         padding-bottom: 200px;
-    }
-    .b6Box{
-        img{
-            top: 50% !important;
-        }
     }
 }
 </style>
