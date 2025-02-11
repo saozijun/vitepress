@@ -365,17 +365,17 @@ const init = () => {
             let tl = gsap.timeline({
                 scrollTrigger: {
                 trigger: item,
-                start: "bottom 90%",
-                end: "top 10%",
+                start: "bottom 100%",
+                end: "top 0%",
                 scrub: true, 
                 }
             });
             tl.fromTo(
                 item,
                 { opacity: 0, y: 60, scale: 0, x: 0 },
-                { opacity: 1, y: 0, scale: 1, x: i % 2 !== 0 ? 60 : -60, duration: 1 }
+                { opacity: 1, y: 0, scale: 1, x: i % 2 !== 0 ? 60 : -60, duration: 2 }
             );
-            tl.to(item, { opacity: 0, y: -60, scale: 0, duration: 1 });
+            tl.to(item, { opacity: 0, y: -60, x: i % 2 !== 0 ? 250 : -250, scale: 0, duration: 2 });
         });
         
         const items6 = gsap.utils.toArray(".b5BoxText li");
@@ -383,17 +383,17 @@ const init = () => {
             let tl = gsap.timeline({
                 scrollTrigger: {
                 trigger: item,
-                start: "bottom 90%",
-                end: "top 10%",
+                start: "bottom 100%",
+                end: "top 0%",
                 scrub: true, 
                 }
             });
             tl.fromTo(
                 item,
                 { opacity: 0, y: 60, scale: 0},
-                { opacity: 1, y: 0, scale: 1, duration: 1 }
+                { opacity: 1, y: 0, scale: 1, duration: 2 }
             );
-            tl.to(item, { opacity: 0, y: 0, scale: 0, duration: 1 });
+            tl.to(item, { opacity: 0, y: 0, scale: 0, duration: 2 });
         });
 
         // 效果 7
