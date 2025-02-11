@@ -54,6 +54,14 @@
                     <img ref="b3ImgRef" src="../viewMd/img/bg.jpg" alt="">
                     <div ref="b3t1Ref"></div>
                     <div ref="b3t2Ref"></div>
+                    <section>
+                        <p ref="b3t3Ref">
+                            <ShinyText text="壁纸" :disabled="false" :speed="3" className="b3text" />
+                        </p>
+                        <p ref="b3t4Ref">
+                            <ShinyText text="推荐" :disabled="false" :speed="3" className="b3text" />
+                        </p>
+                    </section>
                 </div>
             </div>
         </div>
@@ -158,6 +166,8 @@ const b3BoxInnerRef = ref(null);
 const b3ImgRef = ref(null);
 const b3t1Ref = ref(null);
 const b3t2Ref = ref(null);
+const b3t3Ref = ref(null);
+const b3t4Ref = ref(null);
 
 const base4Ref = ref(null);
 const b4BoxRef = ref(null);
@@ -250,6 +260,8 @@ const init = () => {
             .to({}, { duration: 3 }, 8);
 
         // 效果4
+        
+        const b3tbox = gsap.utils.toArray(".b3textbox .b13-text");
         gsap.timeline({
             scrollTrigger: {
                 trigger: base3Ref.value,
@@ -270,8 +282,12 @@ const init = () => {
                 duration: 3
             }, 3)
             .from(b3ImgRef.value, { opacity: 0, duration: 5 }, 3)
+            .to(b3t3Ref.value, { opacity: .1, duration: 3 }, 3)
+            .to(b3t4Ref.value, { opacity: .1, duration: 3 }, 3)
             .to(b3t1Ref.value, { opacity: 1, x: 300, duration: 3 }, 5)
             .to(b3t2Ref.value, { opacity: 1, x: -300, duration: 3 }, 5)
+            .to(b3t3Ref.value, { opacity: .5, x: -250, duration: 3 }, 5)
+            .to(b3t4Ref.value, { opacity: .5, x: 250, duration: 3 }, 5)
             .to({}, { duration: 3 }, 8)
 
         // 效果5
@@ -547,8 +563,23 @@ const init = () => {
                 height: 100%;
                 border-radius: 15px;
             }
-
-            div {
+            section{
+                width: 100%;
+                height: 100%;
+                display: block;
+                position: absolute;
+                top: 0;
+                left: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                .b3text{
+                    font-size: 50px;
+                    line-height: 1;
+                    background-color: #606060;
+                }
+            }
+            >div {
                 opacity: 0;
                 width: 100%;
                 height: 100%;
@@ -770,7 +801,6 @@ const init = () => {
     .base5{
         padding-bottom: 200px;
     }
-
     .b6Box{
         img{
             top: 50% !important;
