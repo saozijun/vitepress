@@ -115,9 +115,26 @@
 
         <div class="base5" ref="base5Ref">
             <ul ref="b5BoxRef" class="b5Box">
-                <li v-for="i in 20" :key="i">
-                    <ShinyText text="🍲" :disabled="false" :speed="4" className="b3text" />
-                </li>
+                <li><ShinyText text="🦪" :disabled="false" :speed="4" className="b6text" /></li>
+                <li><ShinyText text="🍔" :disabled="false" :speed="4" className="b6text" /></li>
+                <li><ShinyText text="🍰" :disabled="false" :speed="4" className="b6text" /></li>
+                <li><ShinyText text="🍖" :disabled="false" :speed="4" className="b6text" /></li>
+                <li><ShinyText text="🍕" :disabled="false" :speed="4" className="b6text" /></li>
+                <li><ShinyText text="🍱" :disabled="false" :speed="4" className="b6text" /></li>
+                <li><ShinyText text="🍨" :disabled="false" :speed="4" className="b6text" /></li>
+                <li><ShinyText text="🍡" :disabled="false" :speed="4" className="b6text" /></li>
+                <li><ShinyText text="🍇" :disabled="false" :speed="4" className="b6text" /></li>
+                <li><ShinyText text="🍝" :disabled="false" :speed="4" className="b6text" /></li>
+                <li><ShinyText text="🦪" :disabled="false" :speed="4" className="b6text" /></li>
+                <li><ShinyText text="🍔" :disabled="false" :speed="4" className="b6text" /></li>
+                <li><ShinyText text="🍰" :disabled="false" :speed="4" className="b6text" /></li>
+                <li><ShinyText text="🍖" :disabled="false" :speed="4" className="b6text" /></li>
+                <li><ShinyText text="🍕" :disabled="false" :speed="4" className="b6text" /></li>
+                <li><ShinyText text="🍱" :disabled="false" :speed="4" className="b6text" /></li>
+                <li><ShinyText text="🍨" :disabled="false" :speed="4" className="b6text" /></li>
+                <li><ShinyText text="🍡" :disabled="false" :speed="4" className="b6text" /></li>
+                <li><ShinyText text="🍇" :disabled="false" :speed="4" className="b6text" /></li>
+                <li><ShinyText text="🍝" :disabled="false" :speed="4" className="b6text" /></li>
             </ul>
             <ul class="b5BoxText">
                 <li v-for="i in 10" :key="i">
@@ -128,9 +145,16 @@
 
         <div class="base6" ref="base6Ref">
             <ul ref="b6BoxRef" class="b6Box">
-                <li v-for="i in 10" :key="i">
-                    <ShinyText text="🦪" :disabled="false" :speed="4" className="b6text" />
-                </li>
+                <li><ShinyText text="🦪" :disabled="false" :speed="4" className="b6text" /></li>
+                <li><ShinyText text="🍔" :disabled="false" :speed="4" className="b6text" /></li>
+                <li><ShinyText text="🍰" :disabled="false" :speed="4" className="b6text" /></li>
+                <li><ShinyText text="🍖" :disabled="false" :speed="4" className="b6text" /></li>
+                <li><ShinyText text="🍕" :disabled="false" :speed="4" className="b6text" /></li>
+                <li><ShinyText text="🍱" :disabled="false" :speed="4" className="b6text" /></li>
+                <li><ShinyText text="🍨" :disabled="false" :speed="4" className="b6text" /></li>
+                <li><ShinyText text="🍡" :disabled="false" :speed="4" className="b6text" /></li>
+                <li><ShinyText text="🍇" :disabled="false" :speed="4" className="b6text" /></li>
+                <li><ShinyText text="🍝" :disabled="false" :speed="4" className="b6text" /></li>
                 <div ref="b6Img">
                     <img src="../viewMd/img/eat.gif" alt="">
                 </div>
@@ -338,41 +362,38 @@ const init = () => {
         // 效果6
         const items5 = gsap.utils.toArray(".b5Box li");
         items5.forEach((item, i) => {
-            gsap.to(
-                item,
-                {
-                    x: i % 2 != 0 ? 60 : -60,
-                    duration: 1,
-                    opacity: 1,
-                    scale: 1,
-                    scrollTrigger: {
-                        trigger: item,
-                        start: "top 80%",
-                        scrub: 1,
-                        end: "+=400",
-                        toggleActions: "play reverse play reverse",
-                    },
+            let tl = gsap.timeline({
+                scrollTrigger: {
+                trigger: item,
+                start: "bottom 90%",
+                end: "top 10%",
+                scrub: true, 
                 }
+            });
+            tl.fromTo(
+                item,
+                { opacity: 0, y: 60, scale: 0, x: 0 },
+                { opacity: 1, y: 0, scale: 1, x: i % 2 !== 0 ? 60 : -60, duration: 1 }
             );
+            tl.to(item, { opacity: 0, y: -60, scale: 0, duration: 1 });
         });
+        
         const items6 = gsap.utils.toArray(".b5BoxText li");
         items6.forEach((item, i) => {
-            gsap.from(
-                item,
-                {
-                    y: 100,
-                    duration: 1,
-                    opacity: 0,
-                    scale: 0,
-                    scrollTrigger: {
-                        trigger: item,
-                        start: "top 80%",
-                        scrub: 1,
-                        end: "+=400",
-                        toggleActions: "play reverse play reverse",
-                    },
+            let tl = gsap.timeline({
+                scrollTrigger: {
+                trigger: item,
+                start: "bottom 90%",
+                end: "top 10%",
+                scrub: true, 
                 }
+            });
+            tl.fromTo(
+                item,
+                { opacity: 0, y: 60, scale: 0},
+                { opacity: 1, y: 0, scale: 1, duration: 1 }
             );
+            tl.to(item, { opacity: 0, y: 0, scale: 0, duration: 1 });
         });
 
         // 效果 7
@@ -722,6 +743,9 @@ const init = () => {
             justify-content: center;
             align-items: center;
             transform: translateX(-50%) rotateX(45deg);
+            .b6text{
+                font-size: 40px;
+            }
         }
         >div{
             position: absolute;
