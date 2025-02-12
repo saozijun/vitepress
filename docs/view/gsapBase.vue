@@ -372,8 +372,8 @@ const init = () => {
             });
             tl.fromTo(
                 item,
-                { opacity: 0, y: 60, scale: 0, x: 0 },
-                { opacity: 1, y: 0, scale: 1, x: i % 2 !== 0 ? 60 : -60, duration: 2 }
+                { opacity: 0, y: 60, scale: 0, x: i % 2 !== 0 ? -50 : 50, },
+                { opacity: 1, y: 0, scale: 1, x: i % 2 !== 0 ? 60 : -60, duration: 2}
             );
             tl.to(item, { opacity: 0, y: -60, x: i % 2 !== 0 ? -60 : 60, scale: 0, duration: 2 });
         });
@@ -393,7 +393,7 @@ const init = () => {
                 { opacity: 0, y: 60, scale: 0},
                 { opacity: 1, y: 0, scale: 1, duration: 2 }
             );
-            tl.to(item, { opacity: 0, y: 0, scale: 0, duration: 2 });
+            tl.to(item, { opacity: 0, y: -60, scale: 0, duration: 2 });
         });
 
         // 效果 7
@@ -641,7 +641,7 @@ const init = () => {
         ul {
             width: 100%;
             position: relative;
-            padding-bottom: 200px;
+            padding-bottom: 80px;
             left: 0;
             display: flex;
             flex-direction: column;
