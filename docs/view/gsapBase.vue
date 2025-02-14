@@ -114,6 +114,10 @@
         </div>
 
         <div class="base5" ref="base5Ref">
+            <div class="b5tb">
+                <div ref="ytRef">夜</div>
+                <div ref="xtRef">宵</div>
+            </div>
             <ul ref="b5BoxRef" class="b5Box">
                 <li><ShinyText text="🦪" :disabled="false" :speed="4" className="b6text" /></li>
                 <li><ShinyText text="🍔" :disabled="false" :speed="4" className="b6text" /></li>
@@ -208,6 +212,8 @@ const b4BoxInnerRef = ref(null);
 
 const base5Ref = ref(null);
 const b5BoxRef = ref(null);
+const ytRef = ref(null)
+const xtRef = ref(null)
 
 const b6Img = ref(null);
 onMounted(async () => {
@@ -381,6 +387,33 @@ const init = () => {
             tl.to(item, { opacity: 0, y: -60, x: i % 2 !== 0 ? -60 : 60, scale: 0, duration: 2 });
         });
         
+        gsap.from(
+            ytRef.value,
+            {
+                x: -200,
+                duration: 2,
+                opacity: 0,
+                scrollTrigger: {
+                    trigger: ytRef.value,
+                    start: "top 80%",
+                    scrub: 1
+                },
+            }
+        );
+
+        gsap.from(
+            xtRef.value,
+            {
+                x: 200,
+                duration: 2,
+                opacity: 0,
+                scrollTrigger: {
+                    trigger: xtRef.value,
+                    start: "top 80%",
+                    scrub: 1
+                },
+            }
+        );
         const items6 = gsap.utils.toArray(".b5BoxText li");
         items6.forEach((item, i) => {
             let tl = gsap.timeline({
@@ -682,6 +715,30 @@ const init = () => {
     width: 100%;
     padding-bottom: 200px;
     position: relative;
+    .b5tb{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        height: 100vh;
+        transform: translate(-50%, -50%);
+        display: flex;
+        align-items: center;
+        font-size: 50vw;
+        >div{
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image:-webkit-linear-gradient(left,#494949,#2b2b2b,#242424); 
+            -webkit-background-clip:text; 
+            -webkit-text-fill-color:transparent;
+            // opacity: 0;
+            &:nth-child(2){
+                background-image:-webkit-linear-gradient(right,#494949, #2b2b2b,#242424); 
+            }
+        }
+        
+    }
     .b5Box{
         display: grid;
         grid-template-columns: repeat(2, 150px);
