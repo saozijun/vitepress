@@ -9,6 +9,7 @@ import FallingText from '../../../components/FallingText.vue'
 
 import gsapJy from '../../view/gsapJy.vue'
 import gsapBase from '../../view/gsapBase.vue'
+import gsapBase2 from '../../view/gsapBase2.vue'
 import home from '../../view/home.vue'
 import "element-plus/dist/index.css"
 import 'animate.css';
@@ -25,6 +26,7 @@ export default {
     app.component('home',home)
     app.component('gsapJy',gsapJy)
     app.component('gsapBase',gsapBase)
+    app.component('gsapBase2',gsapBase2)
     app.component('Music',Music)
     app.component('SearchSong',SearchSong)
     app.component('SplashCursor',SplashCursor)

@@ -161,6 +161,9 @@
             </ul>
         </div>
     </div>
+    <div class="end">
+        <ShinyText text="已经到底啦！" :disabled="false" :speed="3" className="h2" />
+    </div>
 </template>
 
 <script setup>
@@ -837,5 +840,9 @@ const init = () => {
     .base5{
         padding-bottom: 200px;
     }
+}
+.end{
+    text-align: center;
+    margin-bottom: 200px;
 }
 </style>

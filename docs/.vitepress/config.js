@@ -59,6 +59,7 @@ export default defineConfig({
         text: '🦸‍♂ gsap练习',
         items: [
           { text: '🎈 基础练习', link: '/viewMd/gsapBase' },
+          { text: '🎈 进阶练习', link: '/viewMd/gsapBase2' },
           { text: '✂︎ 仿剪映官网', link: '/viewMd/gsapJy' },
         ]
       },
