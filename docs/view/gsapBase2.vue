@@ -95,7 +95,7 @@ const init = () => {
                 scrub: 1,
                 anticipatePin: 1,
                 pin: base1Ref.value,
-                markers: true, // 调试显示
+                // markers: true, // 调试显示
             }
         })
         b1tl.to(topsRef.value, {width: b1target.width , height: b1target.height, duration: 1.2 }, 0)
