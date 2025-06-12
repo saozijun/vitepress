@@ -6,6 +6,7 @@ import SplashCursor from '../../../components/SplashCursor.vue'
 import ShinyText from '../../../components/ShinyText.vue'
 import InfiniteMenu from '../../../components/InfiniteMenu.vue'
 import FallingText from '../../../components/FallingText.vue'
+import Loxbe from '../../../components/Loxbe.vue'
 
 import gsapJy from '../../view/gsapJy.vue'
 import gsapBase from '../../view/gsapBase.vue'
@@ -33,5 +34,6 @@ export default {
     app.component('ShinyText',ShinyText)
     app.component('InfiniteMenu',InfiniteMenu)
     app.component('FallingText',FallingText)
+    app.component('Loxbe',Loxbe)
   }
 }

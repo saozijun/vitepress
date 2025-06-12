@@ -42,9 +42,7 @@
                 <li ref="b11"></li>
                 <li ref="b12"></li>
                 <li ref="b14"></li>
-                <li ref="b13">
-                    <ShinyText text="volcano" :disabled="false" :speed="3" className="b13-text" />
-                </li>
+                <li ref="b13"></li>
             </ul>
         </div>
 

@@ -362,18 +362,18 @@ const init = () => {
     .wrapper1{
         width: 100%;
     }
-    .wrapper2{
-        width: 350px;
-        .w-b2 {
-            height: 197px;
-        }
-    }
 }
 
 @media screen and (max-width: 768px) {
     .top-text{
         .h1{
             font-size: 58px !important;
+        }
+    }
+    .wrapper2{
+        width: 350px;
+        .w-b2 {
+            height: 197px;
         }
     }
 }

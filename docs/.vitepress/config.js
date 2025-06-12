@@ -18,8 +18,8 @@ export default defineConfig({
   titleTemplate: '喜晴',
   themeConfig: {
     algolia: {
-      appId: 'WMFM3T3COH',
-      apiKey: '229934eaa6dca846fa8509eeafb54d52',
+      appId: 'DIWOWWFEGS',
+      apiKey: 'db6dfee4794e05efa98d1579244be607',
       indexName: 'saozijunio',
       placeholder: '请输入关键词',
       buttonText: '搜索',

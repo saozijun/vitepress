@@ -2,7 +2,10 @@
 	<div class="box">
 		<div class="vanta-box">
 			<div class="vanta-text" :style="{ color: textColor }">
-				<ShinyText text="Volcnao" :disabled="false" :speed="3" className="t1"/>
+				<div class="loxbe-container">
+					<Loxbe width="45" height="45" bgColor="#60b790" color="#203B83"/>
+					<ShinyText text="Volcnao" :disabled="false" :speed="3" className="t1"/>
+				</div>
 				<ShinyText text="Front end learning" :disabled="false" :speed="2.5" className="t2"/>
 				<div class="btn" @click="start">
 					<ShinyText text="开始" :disabled="false" :speed="3" className="btn-text"/>
@@ -22,20 +25,23 @@
 			<span></span>
 		</div>
 		<div class="title" style="margin-top: 80px;">
-			<p>🔭 掌握技能</p>
-			<span>主前端，后端新手 hover有交互哦~</span>
+			<p>🎮 击剑大乱斗</p>
+			<span>拖拽任意玩家来场有趣的碰撞吧~</span>
 		</div>
 		<div class="falling-text">
 			<FallingText
-			:text="`前端框架: Vue React Angular 小程序 Uniapp | 组件库: ElementPlus AntDesign Vant Uview Vuetify | 后端框架: Nodejs Django Flask SpringBoot`"
-			:highlightWords="['Vue', 'React', '小程序', 'Uniapp', 'ElementPlus', 'AntDesign', 'Nodejs', 'SpringBoot']"
+			:text="`🤺 🤺 🤺 🤺 🤺 🤺`"
+			:highlightWords="['🤺']"
 			highlightClass="highlighted"
 			trigger="hover"
 			backgroundColor="transparent"
 			:wireframes="false"
-			:gravity="0.56"
-			fontSize="2rem"
-			:mouseConstraintStiffness="0.9"
+			:gravity="0.35"
+			:restitution="0.95"
+			:friction="0.03"
+			:frictionAir="0.002"
+			fontSize="6.4rem"
+			:mouseConstraintStiffness="0.45"
 			/>
 		</div>
 	</div>
@@ -83,6 +89,11 @@ const start = () => {
 			min-width: 560px;
 			display: flex;
 			flex-direction: column;
+		}
+		.loxbe-container{
+			display: flex;
+			align-items: center;
+			gap: 10px;
 		}
 	}
 }
