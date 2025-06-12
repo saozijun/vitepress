@@ -278,12 +278,12 @@ const init = () => {
             }
         })
             .from(b2BoxRef.value, { opacity: 0, duration: .4 }, 0)
-            .to(b1.value, { y: 80, x: -200, scale: 1.5, duration: 2 }, 0)
-            .to(b2.value, { y: 80, x: 200, scale: 1.5, duration: 2 }, 0)
+            .to(b1.value, { y: 80, x: -180, scale: 1.5, duration: 2 }, 0)
+            .to(b2.value, { y: 80, x: 180, scale: 1.5, duration: 2 }, 0)
             .to(b3.value, { y: 120, x: -300, scale: 2, duration: 2 }, 0)
             .to(b4.value, { y: 120, x: 300, scale: 2, duration: 2 }, 0)
-            .to(b5.value, { y: -80, x: -200, scale: 1.5, duration: 2 }, 0)
-            .to(b6.value, { y: -80, x: 200, scale: 1.5, duration: 2 }, 0)
+            .to(b5.value, { y: -80, x: -180, scale: 1.5, duration: 2 }, 0)
+            .to(b6.value, { y: -80, x: 180, scale: 1.5, duration: 2 }, 0)
             .to(b7.value, { y: -120, x: -300, scale: 2, duration: 2 }, 0)
             .to(b8.value, { y: -120, x: 300, scale: 2, duration: 2 }, 0)
             .to(b9.value, { y: -50, scale: 1, duration: 2 }, 2)
@@ -295,7 +295,7 @@ const init = () => {
             .to(b11.value, { x: -80, scale: 1, duration: 2 }, 4)
             .to(b12.value, { x: 80, scale: 1, duration: 2 }, 4)
             .from(b13.value, { opacity: 0, scale: 0, duration: 2 }, 6)
-            .to(b14.value, { scale: 2.5, duration: 1 }, 6)
+            .to(b14.value, { scale: 1.8, duration: 1 }, 6)
             .to({}, { duration: 3 }, 8);
 
         // 效果4
