@@ -1372,7 +1372,7 @@ canvas {
 }
 @media (max-width: 1150px) {
     .face-title {
-        top: 9%;
+        top: 5%;
         right: auto;
         left: 50%;
         font-size: 28px;
@@ -1384,13 +1384,26 @@ canvas {
       border-color: var(--vp-c-green-darker);
     }
     .face-description {
-        top: 16%;
+        top: 12%;
         right: auto;
         max-width: 100%;
         width: 100%;
-        font-size: 18px;
+        font-size: 14px;
         left: 50%;
         transform: translate(-50%, -50%) !important;
+    }
+}
+
+@media (max-width: 450px) {
+    .face-title {
+        top: 12%;
+        right: auto;
+        left: 50%;
+        font-size: 28px;
+        transform: translate(-50%, -50%) !important;
+    }
+    .face-description {
+        top: 19%;
     }
 }
 

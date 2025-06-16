@@ -6,7 +6,7 @@
 					<Loxbe width="45" height="45" bgColor="#60b790" color="#203B83"/>
 					<ShinyText text="Volcnao" :disabled="false" :speed="3" className="t1"/>
 				</div>
-				<ShinyText text="Front end learning" :disabled="false" :speed="2.5" className="t2"/>
+				<ShinyText text="欢迎来到我的博客！" :disabled="false" :speed="2.5" className="t2"/>
 				<div class="btn" @click="start">
 					<ShinyText text="开始" :disabled="false" :speed="3" className="btn-text"/>
 				</div>
@@ -17,14 +17,14 @@
 			</div>
 		</div>
 		<div class="title">
-			<p>日常记✍🏻</p>
+			<p>日常记</p>
 			<span>按住拖动切换笔记</span>
 		</div>
 		<div class="vanta-menu">
 			<InfiniteMenu :items="items"/>
 			<span></span>
 		</div>
-		<div class="title" style="margin-top: 80px;">
+		<!-- <div class="title" style="margin-top: 80px;">
 			<p>🎮 击剑大乱斗</p>
 			<span>拖拽任意玩家来场有趣的碰撞吧~</span>
 		</div>
@@ -43,7 +43,7 @@
 			fontSize="6.4rem"
 			:mouseConstraintStiffness="0.45"
 			/>
-		</div>
+		</div> -->
 	</div>
 </template>
 <script setup>
@@ -176,7 +176,7 @@ const start = () => {
 	background-color: var(--vp-c-brand);
 }
 .t2{
-	font-size: 56px;
+	font-size: 26px;
 	line-height: 1.2;
 	font-weight: bold;
 	background-color: var(--vp-c-text-1);
