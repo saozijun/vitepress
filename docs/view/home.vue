@@ -39,7 +39,7 @@
 			:gravity="0.35"
 			:restitution="0.95"
 			:friction="0.03"
-			:frictionAir="0.002"
+			:frictionAir="0.02"
 			fontSize="6.4rem"
 			:mouseConstraintStiffness="0.45"
 			/>

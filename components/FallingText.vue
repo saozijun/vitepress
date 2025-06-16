@@ -30,6 +30,10 @@
     gravity: { type: Number, default: 1 },
     mouseConstraintStiffness: { type: Number, default: 0.2 },
     fontSize: { type: String, default: "1rem" },
+    restitution: { type: Number, default: 0.8 },
+    frictionAir: { type: Number, default: 0.01 },
+    friction: { type: Number, default: 0.2 },
+
   });
   
   // DOM 引用
@@ -152,9 +156,9 @@
   
       const body = Bodies.rectangle(x, y, rect.width, rect.height, {
         render: { fillStyle: "transparent" },
-        restitution: 0.8,
-        frictionAir: 0.01,
-        friction: 0.2,
+        restitution: props.restitution,
+        frictionAir: props.frictionAir,
+        friction: props.friction,
       });
   
       Matter.Body.setVelocity(body, {

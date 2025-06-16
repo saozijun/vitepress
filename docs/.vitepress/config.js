@@ -20,7 +20,7 @@ export default defineConfig({
     algolia: {
       appId: 'DIWOWWFEGS',
       apiKey: 'db6dfee4794e05efa98d1579244be607',
-      indexName: 'saozijunio',
+      indexName: 'volcano-blog',
       placeholder: '请输入关键词',
       buttonText: '搜索',
     },
