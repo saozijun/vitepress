@@ -4,7 +4,7 @@ import { ElMessage, ElLoading } from 'element-plus';
 // 创建axios实例
 const service = axios.create({
     // 服务接口请求
-    baseURL: 'https://www.wyy.saozijun.top',
+    baseURL: 'https://www.saozijun.top',
     // 超时设置
     // timeout: 15000,
     withCredentials: true,
@@ -14,7 +14,7 @@ const service = axios.create({
 })
  
 // 请求拦截
-service.interceptors.request.use(config => {
+service.interceptors.request.use((config:any) => {
     // 是否需要设置 token放在请求头
     // config.headers['Authorization'] = 'Bearer ' + getToken() // 让每个请求携带自定义token 请根据实际情况自行修改
     // get请求映射params参数
@@ -41,7 +41,7 @@ service.interceptors.request.use(config => {
         config.url = url;
     }
     return config
-}, error => {
+}, (error: any)  => {
     console.log(error)
     Promise.reject(error)
 })
@@ -59,7 +59,7 @@ service.interceptors.response.use((res:any) => {
             return Promise.reject(res.data)
         }
     },
-    error => {
+    (error: any) => {
         // console.log('err' + error)
         let { message } = error;
         if (message == "Network Error") {
